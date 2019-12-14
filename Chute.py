@@ -19,4 +19,4 @@ class Chute:
         if relative_time > self.openingDuration:
             return self.A_max
         # assert isinstance(self.openingTime, Chute)
-        return self.A_max * relative_time / self.openingTime  # Logic for A(t)
+        return self.A_max * relative_time / self.openingDuration  # Logic for A(t)
