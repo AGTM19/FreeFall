@@ -2,6 +2,7 @@ class ChuteManager:
 
     def __init__(self):
         self.chutes = list()
+        self.activeChute = None
 
     def getName(self):
         return "ChuteManager"
@@ -9,13 +10,15 @@ class ChuteManager:
     def addChute(self, chute):
         self.correctChuteHeights(chute)
         self.chutes.append(chute)
+        if self.activeChute is None:
+            self.activeChute = chute
 
     def correctChuteHeights(self, chute):
         if not self.chutes:
             print("No chutes yet")
             return
-        print("There are already ", self.chutes.__sizeof__(), " Chutes")
-        c = self.chutes[self.chutes.__sizeof__() - 1]
+        print("There are already ", len(self.chutes), " Chutes")
+        c = self.chutes[len(self.chutes) - 1]
         if c.cutHeight < chute.openingHeight:
             chute.openingHeight = c.cutHeight
             if chute.cutHeight < chute.openingHeight:
@@ -27,6 +30,6 @@ class ChuteManager:
             if c.cutHeight < h < c.openingHeight:
                 chute = c
                 break
-            if chute is None:
-                return 0
+        if chute is None:
+            return 0
         return chute.get_cwa(t)

@@ -1,6 +1,7 @@
 class Chute:
 
     def __init__(self):
+        self.name = "C"
         self.A_max = 0
         self.openingHeight = 0
         self.cutHeight = 0
