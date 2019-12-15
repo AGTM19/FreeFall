@@ -15,7 +15,7 @@ class ChuteManager:
             print("No chutes yet")
             return
         print("There are already ", self.chutes.__sizeof__(), " Chutes")
-        c = self.chutes[self.chutes.__sizeof__()-1]
+        c = self.chutes[self.chutes.__sizeof__() - 1]
         if c.cutHeight < chute.openingHeight:
             chute.openingHeight = c.cutHeight
             if chute.cutHeight < chute.openingHeight:
