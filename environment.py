@@ -1,7 +1,6 @@
 def rho(h):
-    default = 1000
-    value = default/h if h > 1 else default
-    return value
+    default = 1.000
+    return default
 
 
 def g(h):
