@@ -46,16 +46,12 @@ def height(x, t, *args):
 def acceleration(x, t, *args):
     pox_x, pos_y, velocity_x, velocity_y = x
     velocity_abs = sqrt(velocity_x ** 2 + velocity_y ** 2)
-    sign_x = velocity_x / abs(velocity_x)
-    sign_y = velocity_y / abs(velocity_y)
-
-    # print(args[1].getCWA(t, pos_y))
     acc = 0.5 * rho(pos_y) * velocity_abs ** 2 * args[1].getCWA(t, pos_y) / args[0]  # luftwiderstand
-    return acc * -velocity_x / velocity_abs, acc * velocity_y / velocity_abs - g(pos_y)  # gesamtbeschleunigung
+    return acc * -velocity_x / velocity_abs, acc * -velocity_y / velocity_abs - g(pos_y)  # gesamtbeschleunigung
 
 
-x0 = [2000, 10, 80, 10]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
-t = np.linspace(0, 120, 1000)
+x0 = [0, 2000, 80, 50]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
+t = np.linspace(0, 70, 100000)
 
 x = odeint(height, x0, t, args=args)
 chute.printDate()
@@ -66,4 +62,8 @@ pl.plot(t, x[:, 0])
 pl.legend()
 pl.figure(2)
 pl.plot(t, x[:, 1])
+pl.figure(3)
+pl.plot(t, x[:, 2])
+pl.figure(4)
+pl.plot(t, x[:, 3])
 pl.show()
