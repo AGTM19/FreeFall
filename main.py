@@ -1,32 +1,20 @@
 import numpy as np
+import Input
+import Output
 
-from ChuteManager import ChuteManager
-from Output import visualize
-from solver import solve
+from solver import solve, __resAcc
 
+# InputArguments
 mass = 60  # Masse der Rakete
-chutes = ChuteManager()  # klärt, welcher Fallschirm gerade genutzt wird
-
-chutes.addNewChute(name="Chute1",
-                   A_max=1.5,
-                   cw=2,
-                   openingHeight=2000,
-                   cutHeght=500,
-                   openingDelay=0,
-                   openingDuration=2)
-chutes.addNewChute(name="Chute2",
-                   A_max=3.5,
-                   cw=2,
-                   openingHeight=500,
-                   cutHeght=-1,
-                   openingDelay=0,
-                   openingDuration=2)
+chutes = Input.getChutes()
 
 x0 = [0, 2000, 80, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
-t = np.linspace(0, 170, 1000000)  # TimeVector
+t = np.linspace(0, 170, 10000)  # TimeVector
 args = (mass, chutes)  # additional arguments
 
-x = solve(x0, t, args)
-visualize(x, t)
+x = solve(x0, t, *args)  # [pos_x, pos_y, vel_x, vel_y, acc_x, acc_y]
+Output.visualize(x, t, (0, 1, 2, 3, 4, 5))
+
+print("finish")
 
 
