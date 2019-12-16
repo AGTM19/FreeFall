@@ -1,6 +1,6 @@
 import numpy
 from scipy.integrate import odeint
-from environment import rho, g
+from Environment.environment import rho, g
 
 
 def solve(x0, t, *args):

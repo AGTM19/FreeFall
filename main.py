@@ -1,10 +1,10 @@
 import numpy as np
-import Input
-import Output
+from IO import Input, Output
 
-from solver import solve, __resAcc
 
 # InputArguments
+from solver.solver import solve
+
 mass = 60  # Masse der Rakete
 chutes = Input.getChutes()
 

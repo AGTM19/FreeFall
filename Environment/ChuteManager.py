@@ -1,4 +1,4 @@
-from Chute import Chute
+from Environment.Chute import Chute
 
 
 class ChuteManager:

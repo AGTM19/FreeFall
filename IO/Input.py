@@ -1,4 +1,4 @@
-from ChuteManager import ChuteManager
+from Environment.ChuteManager import ChuteManager
 
 
 def getChutes():
