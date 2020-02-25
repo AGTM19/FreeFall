@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Chute:
 
     def __init__(self):
@@ -13,11 +16,15 @@ class Chute:
     def get_cwa(self, t):
         if self.__openingTime is None or self.__openingTime > t:
             self.__openingTime = t
-        return self.get_a(t) * self.cw
+        return self.__get_a(t) * self.cw
 
-    def get_a(self, t):
+    def __get_a(self, t):
+        """ Calculates the  """
         relative_time = abs(t - self.__openingTime)
-        return self.A_max if relative_time > self.openingDuration else self.A_max * relative_time / self.openingDuration
+        # a = relative_t / self.openingDuration
+        # a = (1-np.e**(-4*relative_t/self.openingDuration))
+        a = np.e ** (-0.7 * relative_time / self.openingDuration - 1)
+        return self.A_max if relative_time > self.openingDuration else a
 
     def printDate(self):
         print("A_max: ", self.A_max, "\nopeningHeight: ", self.openingHeight, "\ncutHeight: ", self.cutHeight,

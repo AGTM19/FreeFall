@@ -6,6 +6,10 @@ from bokeh.io import curdoc
 from bokeh.models import ColumnDataSource, Slider, Div
 from bokeh.models.widgets import Paragraph
 
+# bokeh serve --show final.py
+
+print("final.py is starting")
+
 rho0 = 1.225
 mass = 60
 c_w = 1.33
@@ -57,11 +61,11 @@ source2 = ColumnDataSource(data=dict(x=x1, y=y2))
 TOOLTIP2 = [("Velocity", "@y"), ("Time", "@x"), ]
 TOOLTIP1 = [("Height", "@y"), ("Time", "@x"), ]
 fig = figure(plot_height=500, plot_width=800, title="Height over Time:",
-             tools="reset,wheel_zoom,hover", tooltips=TOOLTIP1,
+             tools="reset,wheel_zoom,hover",
              x_range=[0, t[-1] / 60], y_range=[0, x0[0] * 1.1])
 fig.line("x", "y", source=source1, line_width=3, line_color="red")
 fig2 = figure(plot_height=500, plot_width=800, title="Velocity over Time:",
-              tools="reset,wheel_zoom,hover", tooltips=TOOLTIP2,
+              tools="reset,wheel_zoom,hover",
               x_range=[0, t[-1] / 60], y_range=[0, min(y2) * 1.1])
 fig2.line("x", "y", source=source2, line_width=3)
 text_out = Paragraph(text="The Maximum Force which acts on the Fallschirm is %d N, at time = %d s" % (
