@@ -1,6 +1,6 @@
-from Input import getInput
-from Solver import solve
-from Output import visualize
+from IO.Input import getInput
+from solver.solver import solve
+from IO.Output import visualize
 
 
 def main():

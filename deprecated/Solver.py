@@ -10,7 +10,7 @@ from bokeh.models.widgets import Paragraph
 
 from Chute import Chute
 from ChuteManager import ChuteManager
-from Environment import rho, g
+from Environment.Environment import rho, g
 
 
 def solve(args):

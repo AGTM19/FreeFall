@@ -1,6 +1,6 @@
 import numpy
 from scipy.integrate import odeint
-from Environment.environment import rho, g
+import Environment.Environment as Environment
 
 
 def solve(x0, t, *args):
@@ -24,8 +24,8 @@ def __height(x, t, *args):
 def __acceleration(x, t, *args):
     pox_x, pos_y, velocity_x, velocity_y = x
     velocity_abs = numpy.ma.sqrt(velocity_x ** 2 + velocity_y ** 2)
-    acc = 0.5 * rho(pos_y) * velocity_abs ** 2 * args[1].getCWA(t, pos_y) / args[0]  # luftwiderstand
-    return acc * -velocity_x / velocity_abs, acc * -velocity_y / velocity_abs - g(pos_y)  # gesamtbeschleunigung
+    acc = 0.5 * Environment.rho(pos_y) * velocity_abs ** 2 * args[1].getCWA(t, pos_y) / args[0]  # luftwiderstand
+    return acc * -velocity_x / velocity_abs, acc * -velocity_y / velocity_abs - Environment.g(pos_y)  # gesamtbeschleunigung
 
 
 def __resAcc(x, t, *args):

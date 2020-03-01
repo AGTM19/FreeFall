@@ -1,13 +1,16 @@
-from Environment.ChuteManager import ChuteManager
+import Environment.ChuteManager as ChuteManager
+
+import numpy as np
 
 
 def getInput():
     mass = 60  # Masse der Rakete
-    chutes = Input.getChutes()
+    chutes = __getChutes()
 
     x0 = [0, 2000, 80, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
     t = np.linspace(0, 170, 10000)  # TimeVector
     return mass, chutes, x0, t
+
 
 def __getChutes():
     chutes = ChuteManager()  # klärt, welcher Fallschirm gerade genutzt wird
