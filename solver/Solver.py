@@ -4,6 +4,17 @@ import Environment.Environment as Environment
 
 
 def solve(x0, t, *args):
+    """
+    Demands the mass of the Rocket and a valid initialized ChuteManager.
+    Uses environmental parameters from class File Environment.
+    Returns a Vector with height/velocity and the time vector.
+
+    :param x0: starting Vector [pos_x, pos_y, vel_x, vel_y]
+    :param t: timeVector (starts at starting time, ends at ending time, has as many entries as demanded timesteps for numerical solving)
+    :param args: (mass, ChuteManager)
+    :return: x, t
+    """
+
     y = odeint(__height, x0, t, args=args)
     a = __resAcc(y, t, *args)
     x = numpy.concatenate((y, a), axis=1)

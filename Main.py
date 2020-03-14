@@ -4,6 +4,7 @@ from IO.Output import visualize
 
 
 def main():
-    args = getInput()
-    res = solve(args)
+    mass, chutes, x0, t = getInput()
+    args = (mass, chutes)
+    res = solve(x0, t, args)
     visualize(res)

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6340cc94-ded7-477f-b2f1-f18bfa5fd98a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Environment/ChuteManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment/ChuteManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solver/Solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver/Solver.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
