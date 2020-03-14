@@ -1,4 +1,4 @@
-import Environment.Chute
+import Environment.Chute as Chute
 
 
 class ChuteManager:

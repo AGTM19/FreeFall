@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6340cc94-ded7-477f-b2f1-f18bfa5fd98a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/FreeFall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FreeFall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment/Environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Environment/ChuteManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment/ChuteManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Environment/environment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IO/Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/IO/Input.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/Input.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Output.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/Output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/IO/Server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/Solver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solver/solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver/solver.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
