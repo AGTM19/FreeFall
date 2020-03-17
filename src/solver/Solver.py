@@ -1,6 +1,6 @@
 import numpy
 from scipy.integrate import odeint
-import Environment.Environment as Environment
+from Environment.Environment import Environment
 
 
 def solve(x0, t, *args):
@@ -14,7 +14,6 @@ def solve(x0, t, *args):
     :param args: (mass, ChuteManager)
     :return: x, t
     """
-
     y = odeint(__height, x0, t, args=args)
     a = __resAcc(y, t, *args)
     x = numpy.concatenate((y, a), axis=1)

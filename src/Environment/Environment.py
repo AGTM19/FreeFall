@@ -30,5 +30,5 @@ class Environment:
     @staticmethod
     def g(h):
         if h < 0:
-            a = 0
+            a = 0 # TODO: wofür wird a gebraucht?
         return Environment.g0 * ((6371 * 1000) / (6371 * 1000 + h)) ** 2
