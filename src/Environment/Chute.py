@@ -3,14 +3,14 @@ import numpy as np
 
 class Chute:
 
-    def __init__(self):
-        self.name = "C"
-        self.A_max = 0
-        self.openingHeight = 0
-        self.cutHeight = 0
-        self.openingDelay = 0
-        self.openingDuration = 0
-        self.cw = 0
+    def __init__(self, name, A_max, cw, openingHeight, cutHeght, openingDelay, openingDuration):
+        self.name = name
+        self.A_max = A_max
+        self.cw = cw
+        self.openingHeight = openingHeight
+        self.cutHeight = cutHeght
+        self.openingDelay = openingDelay
+        self.openingDuration = openingDuration
         self.__openingTime = None
 
     def get_cwa(self, t):

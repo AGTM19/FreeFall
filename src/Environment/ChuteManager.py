@@ -1,4 +1,4 @@
-import Environment.Chute as Chute
+from Environment.Chute import Chute
 
 
 class ChuteManager:
@@ -15,17 +15,6 @@ class ChuteManager:
         self.chutes.append(chute)
         if self.activeChute is None:
             self.activeChute = chute
-
-    def addNewChute(self, name, A_max, cw, openingHeight, cutHeght, openingDelay, openingDuration):
-        chute = Chute()
-        chute.name = name
-        chute.A_max = A_max
-        chute.cw = cw
-        chute.openingHeight = openingHeight
-        chute.cutHeight = cutHeght
-        chute.openingDelay = openingDelay
-        chute.openingDuration = openingDuration
-        self.addChute(chute)
 
     def correctChuteHeights(self, chute):
         if not self.chutes:
