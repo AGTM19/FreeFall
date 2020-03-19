@@ -35,6 +35,7 @@ def __acceleration(x, t, *args):
     pox_x, pos_y, velocity_x, velocity_y = x
     velocity_abs = numpy.ma.sqrt(velocity_x ** 2 + velocity_y ** 2)
     acc = 0.5 * Environment.rho(pos_y) * velocity_abs ** 2 * args[1].getCWA(t, pos_y) / args[0]  # luftwiderstand
+    velocity_abs = velocity_abs if velocity_abs != 0 else 1
     return acc * -velocity_x / velocity_abs, acc * -velocity_y / velocity_abs - Environment.g(pos_y)  # gesamtbeschleunigung
 
 
