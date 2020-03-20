@@ -5,11 +5,16 @@ import TextField from '@material-ui/core/TextField';
 class PlotDataContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            ...this.props.initialConfig
+        };
     }
 
 
     render() {
+        const {
+            onChange
+        } = this.props;
         return (
             <div>
                 <h1>Plot Configuration:</h1>
@@ -17,7 +22,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_min"
                         type="number"
-                        defaultValue="0"
+                        onChange={() => onChange(this.state)}
+                        value={this.state.t_min}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -25,7 +31,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_max"
                         type="number"
-                        defaultValue="170"
+                        onChange={() => onChange(this.state)}
+                        value={this.state.t_max}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -33,7 +40,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_steps"
                         type="number"
-                        defaultValue="10000"
+                        onChange={() => onChange(this.state)}
+                        value={this.state.t_steps}
                         InputLabelProps={{
                             shrink: true,
                         }}

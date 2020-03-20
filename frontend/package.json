@@ -12,8 +12,10 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
+    "plotly.js": "^1.52.3",
     "react": "latest",
     "react-dom": "latest",
+    "react-plotly.js": "^2.4.0",
     "react-scripts": "latest"
   },
   "browserslist": {

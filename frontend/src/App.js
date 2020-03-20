@@ -5,7 +5,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import ParaChuteContainer from './ParaChuteContainer.js'
 import RocketDataContainer from "./RocketDataContainer";
 import PlotContainer from "./PlotContainer";
-import PlotDataContainer from "./PlotDataContainer";
 
 
 // https://material-ui.com/components/text-fields/
@@ -45,7 +44,6 @@ export default function App() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <PlotDataContainer styles={classes}/>
             <RocketDataContainer styles={classes}/>
 
             <ParaChuteContainer
