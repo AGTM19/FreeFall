@@ -14,3 +14,5 @@ __pycache__
 
 # Generated files
 .idea/**/contentModel.xml
+
+frontend/node_modules
