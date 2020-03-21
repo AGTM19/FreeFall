@@ -1,4 +1,4 @@
-bokeh
 numpy
 matplotlib
 scipy
+flask
