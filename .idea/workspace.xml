@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6340cc94-ded7-477f-b2f1-f18bfa5fd98a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/ParaChute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ParaChute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/PlotContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/PlotContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/PlotDataContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/PlotDataContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/RocketDataContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/RocketDataContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/datamock.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/datamock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="0ee6e153-a275-4960-bc0e-8087235043bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
