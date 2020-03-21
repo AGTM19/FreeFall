@@ -3,17 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="6340cc94-ded7-477f-b2f1-f18bfa5fd98a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/Environment/ChuteManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment/ChuteManager.py" afterDir="false" />
-=======
->>>>>>> 48fe44c29326a1c32be253f92bd5f578436c8672
-=======
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solver/Solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver/Solver.py" afterDir="false" />
->>>>>>> 768018b881f9ed563fc87ff6cf94907179d6cb33
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ParaChute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ParaChute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/PlotContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/PlotContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/PlotDataContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/PlotDataContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/RocketDataContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/RocketDataContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/datamock.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/datamock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,27 +43,24 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/HyEnD/NextCloud_stuvus/HG-HyEnD/STERN 2/Subsysteme/Recovery/Berechnungen/ParaSolver/FreeFall" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="C:\Users\Bayram\PycharmProjects\FreeFall\deprecated" />
       <recent name="C:\Users\Bayram\PycharmProjects\FreeFall\Environment" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -78,6 +75,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -99,6 +97,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/final.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -120,6 +119,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\Bayram\PycharmProjects\FreeFall\deprecated\Solver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -137,6 +137,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -147,8 +159,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575239379030</updated>
+      <workItem from="1584806486249" duration="7000" />
+      <workItem from="1584806501620" duration="8359000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -162,5 +179,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="607" y="273" width="706" height="528" key="find.popup" timestamp="1584821349339">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="607" y="273" width="706" height="528" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584821349339" />
+    <state x="623" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1584820889719">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584820889719" />
   </component>
 </project>

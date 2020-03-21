@@ -1,8 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import dataMock from './datamock'
 import PlotDataContainer from "./PlotDataContainer";
-import datamock from "./datamock";
 
 
 const linspace = (a,b,n) => {
@@ -18,8 +16,14 @@ class PlotContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            plotConfig: datamock.plot_default_config
+            plotConfig: this.props.initialConfig,
         };
+    }
+
+    changeState(update){
+        const plotConfig = {...this.state.plotConfig, ...update};
+        this.setState({plotConfig});
+        this.props.update(plotConfig);
     }
 
 
@@ -27,6 +31,9 @@ class PlotContainer extends React.Component {
         const {
             t_max, t_min, t_steps,
         } = this.state.plotConfig;
+        const {
+            plotData
+        } = this.props;
 
         return (
             <div>
@@ -38,7 +45,7 @@ class PlotContainer extends React.Component {
                         data={[
                             {
                                 x: linspace(t_min, t_max, t_steps),
-                                y: dataMock.plot1Data,
+                                y: plotData,
                                 type: 'scatter',
                             },
 
@@ -51,7 +58,7 @@ class PlotContainer extends React.Component {
             <PlotDataContainer
                 styles={this.props.styles}
                 initialConfig={this.state.plotConfig}
-                onChange={(plotConfig) => this.setState({plotConfig})}
+                onChange={(update) => this.changeState(update)}
             />
             </div>
         );

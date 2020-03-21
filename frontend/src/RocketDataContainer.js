@@ -1,19 +1,24 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import datamock from "./datamock";
 
 
 class RocketDataContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.defaults = {
-            ...datamock.rocket_default_config
+        this.state = {
+            rocketData: {...this.props.initialConfig}
         };
-        this.state = {};
+    }
+
+    changeState(update){
+        const rocketData = {...this.state.rocketData, ...update};
+        this.setState({rocketData});
+        this.props.update(rocketData)
     }
 
 
     render() {
+        const rocketData = this.state.rocketData;
         return (
             <div>
                 <h1>Rocket Configuration:</h1>
@@ -21,34 +26,36 @@ class RocketDataContainer extends React.Component {
                     <TextField
                         label="Masse der Rakete"
                         type="number"
-                        defaultValue={this.defaults.mass}
-
+                        onChange={e => this.changeState({ mass: e.target.value })}
+                        value={rocketData.mass}
                     />
                     <TextField
                         label="pos_x"
                         type="number"
-                        defaultValue={this.defaults.pos_X}
+                        onChange={e => this.changeState({ pos_x: e.target.value })}
+                        value={rocketData.pos_x}
 
                     />
                     <TextField
                         label="pos_y"
                         type="number"
-                        defaultValue={this.defaults.pos_y}
+                        onChange={e => this.changeState({ pos_y: e.target.value })}
+                        value={rocketData.pos_y}
 
                     />
                     <TextField
                         label="vel_x"
                         type="number"
-                        defaultValue={this.defaults.vel_x}
+                        onChange={e => this.changeState({ vel_x: e.target.value })}
+                        value={rocketData.vel_x}
 
                     />
                     <TextField
                         label="vel_y"
                         type="number"
-                        defaultValue={this.defaults.vel_y}
-
+                        onChange={e => this.changeState({ vel_y: e.target.value })}
+                        value={rocketData.vel_y}
                     />
-
                 </div>
             </div>);
     }

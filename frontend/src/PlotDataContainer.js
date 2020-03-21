@@ -10,11 +10,13 @@ class PlotDataContainer extends React.Component {
         };
     }
 
+    changeState(update){
+        this.setState(update);
+        this.props.onChange(update);
+    }
+
 
     render() {
-        const {
-            onChange
-        } = this.props;
         return (
             <div>
                 <h1>Plot Configuration:</h1>
@@ -22,8 +24,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_min"
                         type="number"
-                        onChange={() => onChange(this.state)}
                         value={this.state.t_min}
+                        onChange={e => this.changeState({ t_min: e.target.value })}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -31,8 +33,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_max"
                         type="number"
-                        onChange={() => onChange(this.state)}
                         value={this.state.t_max}
+                        onChange={e => this.changeState({ t_max: e.target.value })}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -40,8 +42,8 @@ class PlotDataContainer extends React.Component {
                     <TextField
                         label="t_steps"
                         type="number"
-                        onChange={() => onChange(this.state)}
                         value={this.state.t_steps}
+                        onChange={e => this.changeState({ t_steps: e.target.value })}
                         InputLabelProps={{
                             shrink: true,
                         }}

@@ -8,14 +8,19 @@ import Paper from '@material-ui/core/Paper';
 class ParaChute extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            chuteData: this.props.initState
+        }
+    }
+
+    changeState(update){
+        this.setState({chuteData: {...this.state.chuteData, ...update}});
+        this.props.changeChute({...this.state.chuteData, ...update})
     }
 
 
     render() {
-        const {name, A_max,cw,openingHeight,
-            cutHeight,openingDelay,
-            openingDuration,
-        } = this.props.initState;
+        const chuteData = this.state.chuteData;
         const {
             deleteChute,
         } = this.props;
@@ -24,7 +29,7 @@ class ParaChute extends React.Component {
                 <TextField
                     label="Name"
                     type="text"
-                    defaultValue={name}
+                    value={chuteData.name}
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -37,50 +42,38 @@ class ParaChute extends React.Component {
                 <TextField
                     label="A_max"
                     type="number"
-                    defaultValue={A_max}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ A_max: e.target.value })}
+                    value={chuteData.A_max}
                 />
                 <TextField
                     label="cw"
                     type="number"
-                    defaultValue={cw}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ cw: e.target.value })}
+                    value={chuteData.cw}
                 />
                 <TextField
                     label="opening height"
                     type="number"
-                    defaultValue={openingHeight}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ openingHeight: e.target.value })}
+                    value={chuteData.openingHeight}
                 />
                 <TextField
                     label="cut height"
                     type="number"
-                    defaultValue={cutHeight}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ cutHeight: e.target.value })}
+                    value={chuteData.cutHeight}
                 />
                 <TextField
                     label="opening delay"
                     type="number"
-                    defaultValue={openingDelay}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ openingDelay: e.target.value })}
+                    value={chuteData.openingDelay}
                 />
                  <TextField
                     label="opening duration"
                     type="number"
-                    defaultValue={openingDuration}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    onChange={e => this.changeState({ openingDuration: e.target.value })}
+                    value={chuteData.openingDuration}
                 />
             </Paper>
         );

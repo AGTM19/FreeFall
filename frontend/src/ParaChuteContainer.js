@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import ParaChute from "./ParaChute";
-import datamock from "./datamock";
 
 
 class ParaChuteContainer extends React.Component {
@@ -12,12 +11,10 @@ class ParaChuteContainer extends React.Component {
         super(props);
 
         this.state = {
-            chutes: []
+            chutes: [],
+            totalCreatedCount: 0,
+            defaultChute: this.props.defaultChute,
         };
-    }
-
-    componentDidMount() {
-        this.addChute()
     }
 
     renderNewButton() {
@@ -37,17 +34,32 @@ class ParaChuteContainer extends React.Component {
     addChute() {
         const chutes = this.state.chutes;
         const chute = {
-            ...datamock.chute_default_config,
-            name: `Chute ${chutes.length + 1}`,
+            ...this.state.defaultChute,
+            uuid: this.state.totalCreatedCount,
+            name: `Chute ${this.state.totalCreatedCount + 1}`,
         };
         chutes.push(chute);
-        this.setState({chutes});
+        this.setState({chutes, totalCreatedCount: this.state.totalCreatedCount + 1});
+        this.update(chutes)
     }
 
-    deleteChute(name) {
+    deleteChute(uuid) {
         const chutes = [...this.state.chutes];
-        chutes.splice(chutes.findIndex(chute => chute.name === name), 1);
+        chutes.splice(chutes.findIndex(chute => chute.uuid === uuid), 1);
         this.setState({chutes});
+        this.update(chutes)
+    }
+
+    changeChute(uuid, newData) {
+        const chutes = [...this.state.chutes];
+        const chuteIdx = chutes.findIndex(chute => chute.uuid === uuid);
+        chutes.splice(chuteIdx, 1, newData);
+        this.setState({chutes});
+        this.update(chutes)
+    }
+
+    update(chutes){
+        this.props.update(chutes);
     }
 
 
@@ -62,10 +74,11 @@ class ParaChuteContainer extends React.Component {
                           alignItems="flex-start">
                         {
                             chutes.map((chute) => {
-                                    return (<Grid item key={chute.name}>
+                                    return (<Grid item key={chute.uuid}>
                                         <ParaChute styles={this.props.styles}
                                                    initState={chute}
-                                                   deleteChute={() => this.deleteChute(chute.name)}
+                                                   changeChute={(newData) => this.changeChute(chute.uuid, newData)}
+                                                   deleteChute={() => this.deleteChute(chute.uuid)}
                                         />
                                     </Grid>);
                                 }

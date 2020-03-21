@@ -6,7 +6,7 @@ const plot_default_config = {
 
 const rocket_default_config = {
     mass: 60,
-    pos_X: 0,
+    pos_x: 0,
     pos_y: 2000,
     vel_x: 80,
     vel_y: 0,
@@ -1188,9 +1188,17 @@ const plot1Data =
         1.844548280234649269e+02,
         1.844548972039438866e+02];
 
+const sample_response = {
+        message: '',
+        error: null,
+        plotData: [
+            plot1Data
+        ]
+};
 export default {
         plot1Data,
         plot_default_config,
         rocket_default_config,
-        chute_default_config
+        chute_default_config,
+        sample_response,
 }
