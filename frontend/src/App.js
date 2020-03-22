@@ -47,28 +47,30 @@ export default function App() {
 
     let data = {
         rocketData: dataMock.rocket_default_config,
-        chutes: [],
-        plotData: dataMock.plot_default_config
+        chutes: dataMock.initChutes,
+        plotConfig: dataMock.plot_default_config
     };
 
-
-    const update = (update, requires_solve=true) => {
-        data = {...data, ...update};
-        if (!requires_solve){
-            return;
-        }
-        console.log('requesting solve');
-        solver.solve(1, 1)
+    const solve = () => {
+        return solver.solve(data.chutes, data.rocketData, data.plotData)
             .then(res => {
                 if (res.error) {
                     console.log('error on solve');
                     console.error(res.error);
                     return;
                 }
-                data.plotData = res.plotData;
-                console.log('damn, I should have used state to rerender after data change!')
+                data.plotData = res.body.plotData;
+                return data.plotData;
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
+
+
+    const update = (update) => {
+        data = {...data, ...update};
     };
 
 
@@ -83,13 +85,13 @@ export default function App() {
             <ParaChuteContainer
                 styles={classes}
                 update={(x) => update({chutes: x})}
-                defaultChute={dataMock.chute_default_config}
+                chutes={data.chutes}
             />
             <PlotContainer
                 styles={classes}
                 initialConfig={dataMock.plot_default_config}
-                update={(x) => update({plotData: x}, false)}
-                plotData={dataMock.plot1Data}
+                update={(x) => update({plotData: x})}
+                solve={() => solve()}
             />
         </div>
     );

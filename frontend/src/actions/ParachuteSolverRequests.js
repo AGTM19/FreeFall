@@ -1,17 +1,12 @@
-//import * as superagent from 'superagent'
-import datamock from "../datamock";
+import * as superagent from 'superagent'
 
 
 class ParachuteSolverRequests{
 
-    solve(chutes, rocketData){
-       /* return superagent
-            .get('localhost:8000/solve')
-            .send({ chutes, rocketData })
-            .then(res => {
-                console.log(res);
-            })*/
-       return Promise.resolve(datamock.sample_response);
+    solve(chutes, rocketData, plotData){
+        return superagent
+            .post('http://localhost:5000/solve')
+            .send({ chutes, rocketData, plotData })
     }
 
 }

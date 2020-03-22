@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee6e153-a275-4960-bc0e-8087235043bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ParaChuteContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/PlotContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/PlotContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/ParachuteSolverRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/ParachuteSolverRequests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/datamock.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/datamock.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +63,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/HyEnD/NextCloud_stuvus/HG-HyEnD/STERN 2/Subsysteme/Recovery/Berechnungen/ParaSolver/FreeFall" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -184,13 +190,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6340cc94-ded7-477f-b2f1-f18bfa5fd98a" name="Default Changelist" comment="" />
+      <changelist id="0ee6e153-a275-4960-bc0e-8087235043bc" name="Default Changelist" comment="" />
       <created>1575239379030</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575239379030</updated>
       <workItem from="1584806486249" duration="7000" />
       <workItem from="1584806501620" duration="8359000" />
+      <workItem from="1584869841937" duration="8168000" />
     </task>
     <servers />
   </component>
@@ -209,6 +216,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/flask-restful" />
+    </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
     <state x="558" y="200" width="800" height="690" key="#Plugins" timestamp="1584825826554">
@@ -235,14 +247,20 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="759" y="252" width="398" height="587" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584825035763" />
-    <state x="607" y="273" width="706" height="528" key="find.popup" timestamp="1584821349339">
+    <state x="452" y="174" width="1016" height="743" key="SettingsEditor" timestamp="1584869869212">
       <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="452" y="174" width="1016" height="743" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584869869212" />
+    <state x="616" y="546" width="716" height="1056" key="find.popup" timestamp="1584887773769">
+      <screen x="0" y="0" width="1947" height="2160" />
     </state>
     <state x="607" y="273" width="706" height="528" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584821349339" />
-    <state x="623" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1584825930291">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="616" y="546" width="716" height="1056" key="find.popup/0.0.1947.2160@0.0.1947.2160" timestamp="1584887773769" />
+    <state x="632" y="468" width="682" height="1356" key="search.everywhere.popup" timestamp="1584888150329">
+      <screen x="0" y="0" width="1947" height="2160" />
     </state>
-    <state x="623" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584825930291" />
+    <state x="623" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584872664470" />
+    <state x="632" y="468" width="682" height="1356" key="search.everywhere.popup/0.0.1947.2160@0.0.1947.2160" timestamp="1584888150329" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FreeFall$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1584826427082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

@@ -11,9 +11,8 @@ class ParaChuteContainer extends React.Component {
         super(props);
 
         this.state = {
-            chutes: [],
-            totalCreatedCount: 0,
-            defaultChute: this.props.defaultChute,
+            chutes: this.props.chutes,
+            totalCreatedCount: this.props.chutes.length,
         };
     }
 
@@ -34,7 +33,7 @@ class ParaChuteContainer extends React.Component {
     addChute() {
         const chutes = this.state.chutes;
         const chute = {
-            ...this.state.defaultChute,
+            ...this.props.chutes[0],
             uuid: this.state.totalCreatedCount,
             name: `Chute ${this.state.totalCreatedCount + 1}`,
         };

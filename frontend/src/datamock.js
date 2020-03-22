@@ -12,8 +12,19 @@ const rocket_default_config = {
     vel_y: 0,
 };
 
-const chute_default_config = {
-    name: '',
+const chute1_default_config = {
+    name: 'Chute 1',
+    uuid: 0,
+    A_max: 1.5,
+    cw: 2,
+    openingHeight: 2000,
+    cutHeight: 500,
+    openingDelay: 0,
+    openingDuration: 2
+};
+const chute2_default_config = {
+    name: 'Chute 2',
+    uuid:1,
     A_max: 3.5,
     cw: 2,
     openingHeight: 500,
@@ -21,6 +32,8 @@ const chute_default_config = {
     openingDelay: 0,
     openingDuration: 2
 };
+
+const initChutes = [chute1_default_config, chute2_default_config];
 
 const plot1Data =
     [2.697299237079390899e+00,
@@ -1199,6 +1212,6 @@ export default {
         plot1Data,
         plot_default_config,
         rocket_default_config,
-        chute_default_config,
+        initChutes,
         sample_response,
 }
