@@ -20,10 +20,11 @@ class Chute:
 
     def __get_a(self, t):
         """ Calculates the  """
-        relative_time = abs(t - self.__openingTime)
+        relative_time = abs(t - self.__openingTime) - self.openingDelay
+        relative_time = 0 if relative_time < 0 else relative_time
         # a = relative_t / self.openingDuration
         # a = (1-np.e**(-4*relative_t/self.openingDuration))
-        a = np.e ** (-0.7 * relative_time / self.openingDuration - 1)
+        a = self.A_max * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
         return self.A_max if relative_time > self.openingDuration else a
 
     def printDate(self):
