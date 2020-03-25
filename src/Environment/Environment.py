@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Environment:
     h0 = 0  # m
     t0 = 288.15  # K
@@ -30,5 +33,9 @@ class Environment:
     @staticmethod
     def g(h):
         if h < 0:
-            a = 0 # TODO: wofür wird a gebraucht?
+            a = 0  # TODO: wofür wird a gebraucht?
         return Environment.g0 * ((6371 * 1000) / (6371 * 1000 + h)) ** 2
+
+    @staticmethod
+    def mach(h, v):
+        return v / np.sqrt(Environment.kappa * Environment.r / Environment.mol * Environment.temperature(h))
