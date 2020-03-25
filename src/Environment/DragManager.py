@@ -1,6 +1,6 @@
 from Environment import RocketManager
 from Environment import ChuteManager
-from Environment import Environment
+from Environment.Environment import Environment
 import numpy as np
 
 

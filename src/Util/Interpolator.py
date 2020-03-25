@@ -13,7 +13,7 @@ class Interpolator:
 
         valid_keys = Interpolator.__getValidKey__(keys, key)
         if valid_keys[0] == valid_keys[1]:
-            return d[key]
+            return d[valid_keys[0]]
         return Interpolator.__interpolate__(key, valid_keys, d)
 
     @staticmethod

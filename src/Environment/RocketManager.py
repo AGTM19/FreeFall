@@ -1,4 +1,4 @@
-import Util.Interpolator as Interpolator
+from Util.Interpolator import Interpolator
 
 
 class RocketManager:
