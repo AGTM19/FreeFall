@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Interpolator:
 
     @staticmethod
@@ -12,9 +15,17 @@ class Interpolator:
         keys = Interpolator.__getKeyList__(d)
 
         valid_keys = Interpolator.__getValidKey__(keys, key)
-        if valid_keys[0] == valid_keys[1]:
+        if np.abs(valid_keys[0] - valid_keys[1]) < 0.00000001:
             return d[valid_keys[0]]
         return Interpolator.__interpolate__(key, valid_keys, d)
+
+    @staticmethod
+    def getGradiant(d, key):
+        keys = Interpolator.__getKeyList__(d)
+        valid_keys = Interpolator.__getValidKey__(keys, key)
+        if np.abs(valid_keys[0] - valid_keys[1]) < 0.00000001:
+            return 0
+        return (d[valid_keys[1]] - d[valid_keys[0]]) / (valid_keys[1] - valid_keys[0])
 
     @staticmethod
     def __getKeyList__(d):
