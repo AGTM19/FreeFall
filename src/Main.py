@@ -7,7 +7,7 @@ def main():
     params = Input()
     params.retrieve_input()
     visualizer = Output()
-    x = solve(params.x0, params.t, params.mass, params.chute_manager)
+    x = solve(params.x0, params.t, params.rocket_manager.mass, params.drag_manager)
     visualizer.visualize(x, params.t)
 
 

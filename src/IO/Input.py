@@ -1,14 +1,17 @@
 from Environment.ChuteManager import ChuteManager
 from Environment.Chute import Chute
+from Environment.RocketManager import RocketManager
+from Environment.DragManager import DragManager
 
 import numpy as np
 
 
 class Input:
-    mass = 0
     x0 = []
     t = None
     additional_args = {}  # hier kann man hinzufuegen, falls in odeint extra Parameter wie 'col_deriv' gebraucht werden
+    rocket_manager = RocketManager()
+    rocket_manager.mass = 100
     chute_manager = ChuteManager()
     chutes = [
         Chute(
@@ -28,16 +31,15 @@ class Input:
             openingDelay=2,
             openingDuration=2)
     ]
+    drag_manager = None
 
     def retrieve_input(self):
         """
         assigns x0, t, and mass to the class
         adds all chutes to classes' chute_manager
         """
-        self.mass = 100  # Masse der Rakete
         for c in self.chutes:
             self.chute_manager.addChute(c)
-
+        self.drag_manager = DragManager(self.rocket_manager, self.chute_manager)
         self.x0 = [0, 20000, 0, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
         self.t = np.linspace(0, 10, 10000)  # TimeVector
-
