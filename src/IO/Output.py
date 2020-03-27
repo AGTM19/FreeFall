@@ -1,14 +1,16 @@
 import matplotlib.pyplot as pl
 
+ylabel = ["Range [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"]
 
 class Output:
 
     @staticmethod
     def visualize(x, t):
-        index = 0
-        for _ in range(x.shape[1]):
+        for index in range(x.shape[1]):
             pl.figure(index + 1)
             pl.plot(t, x[:, index])
+            pl.xlabel('Time [s]')
+            pl.ylabel(ylabel[index])
             #pl.legend()
-            index += 1
+            pl.grid(True)
         pl.show()
