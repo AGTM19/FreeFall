@@ -17,7 +17,9 @@ def solve(x0, t, *args):
     y = odeint(__height, x0, t, args=args)
     a = __resAcc(y, t, *args)
     x = numpy.concatenate((y, a), axis=1)
-    return x
+    t, x = __cutNullResult(x, t)
+
+    return t, x
 
 
 def __height(x, t, *args):
@@ -46,3 +48,17 @@ def __resAcc(x, t, *args):
         [__acceleration(x[i], t[i], *args)[1] for i in range(len(t))]
     ]))
     return a
+
+
+def __cutNullResult(x, t):
+    total_length = len(t)
+    last_index = len(t)
+    for index in range(total_length):
+        if numpy.abs(x[index][1]) < 0.0000001:
+            last_index = index
+            break
+
+    x_new = x[:last_index][:]
+    t = t[:last_index]
+    print("total time was ", (100 * (1 - last_index / total_length)), "% too long")
+    return t, x_new

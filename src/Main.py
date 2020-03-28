@@ -7,8 +7,8 @@ def main():
     params = Input()
     params.retrieve_input()
     visualizer = Output()
-    x = solve(params.x0, params.t, params.rocket_manager.mass, params.drag_manager)
-    visualizer.visualize(x, params.t)
+    t, x = solve(params.x0, params.t, params.rocket_manager.mass, params.drag_manager)
+    visualizer.visualize(x, t)
 
 
 if __name__ == '__main__':
