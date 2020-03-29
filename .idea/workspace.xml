@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee6e153-a275-4960-bc0e-8087235043bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,6 +191,7 @@
       <workItem from="1584806486249" duration="7000" />
       <workItem from="1584806501620" duration="8359000" />
       <workItem from="1584869841937" duration="8806000" />
+      <workItem from="1585431507479" duration="2753000" />
     </task>
     <servers />
   </component>
@@ -219,26 +221,30 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="558" y="200" width="800" height="690" key="#Plugins/0.0.1920.1080@0.0.1920.1080" timestamp="1584825826554" />
-    <state width="1874" height="284" key="GridCell.Tab.0.bottom" timestamp="1584888915047">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state width="1874" height="284" key="GridCell.Tab.0.bottom" timestamp="1585439960054">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state width="1874" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584826442356" />
     <state width="1874" height="284" key="GridCell.Tab.0.bottom/0.0.1947.2160@0.0.1947.2160" timestamp="1584888915047" />
-    <state width="1874" height="284" key="GridCell.Tab.0.center" timestamp="1584888915047">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state width="1874" height="284" key="GridCell.Tab.0.bottom/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585439960054" />
+    <state width="1874" height="284" key="GridCell.Tab.0.center" timestamp="1585439960054">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state width="1874" height="284" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584826442354" />
     <state width="1874" height="284" key="GridCell.Tab.0.center/0.0.1947.2160@0.0.1947.2160" timestamp="1584888915047" />
-    <state width="1874" height="284" key="GridCell.Tab.0.left" timestamp="1584888915047">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state width="1874" height="284" key="GridCell.Tab.0.center/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585439960054" />
+    <state width="1874" height="284" key="GridCell.Tab.0.left" timestamp="1585439960054">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state width="1874" height="284" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584826442353" />
     <state width="1874" height="284" key="GridCell.Tab.0.left/0.0.1947.2160@0.0.1947.2160" timestamp="1584888915047" />
-    <state width="1874" height="284" key="GridCell.Tab.0.right" timestamp="1584888915047">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state width="1874" height="284" key="GridCell.Tab.0.left/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585439960054" />
+    <state width="1874" height="284" key="GridCell.Tab.0.right" timestamp="1585439960054">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state width="1874" height="284" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584826442355" />
     <state width="1874" height="284" key="GridCell.Tab.0.right/0.0.1947.2160@0.0.1947.2160" timestamp="1584888915047" />
+    <state width="1874" height="284" key="GridCell.Tab.0.right/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585439960054" />
     <state x="759" y="252" width="398" height="587" key="RollbackChangesDialog" timestamp="1584825035763">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -247,18 +253,20 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="452" y="174" width="1016" height="743" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584869869212" />
-    <state x="616" y="546" width="716" height="1056" key="find.popup" timestamp="1584887773769">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state x="662" y="273" width="707" height="528" key="find.popup" timestamp="1585433055888">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state x="607" y="273" width="706" height="528" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584821349339" />
     <state x="616" y="546" width="716" height="1056" key="find.popup/0.0.1947.2160@0.0.1947.2160" timestamp="1584887773769" />
-    <state x="632" y="468" width="682" height="1356" key="search.everywhere.popup" timestamp="1584888150329">
-      <screen x="0" y="0" width="1947" height="2160" />
+    <state x="662" y="273" width="707" height="528" key="find.popup/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585433055888" />
+    <state x="678" y="234" width="673" height="678" key="search.everywhere.popup" timestamp="1585439952745">
+      <screen x="55" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584872664470" />
     <state x="632" y="468" width="682" height="1356" key="search.everywhere.popup/0.0.1947.2160@0.0.1947.2160" timestamp="1584888150329" />
+    <state x="678" y="234" width="673" height="678" key="search.everywhere.popup/55.0.1920.1080/0.1080.1920.1080@55.0.1920.1080" timestamp="1585439952745" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FreeFall$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1584888903353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/FreeFall$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1585432325950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
