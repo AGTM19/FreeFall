@@ -39,7 +39,7 @@ class ChuteSizeContaier extends React.Component {
     render() {
         return (
             <div>
-                <h1>Chute Size Calculator:</h1>
+                <h1>Chute Size Calculator</h1>
                 <div style={{flexGrow: 1}}>
 
 

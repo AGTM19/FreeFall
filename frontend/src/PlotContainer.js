@@ -4,6 +4,9 @@ import PlotDataContainer from "./PlotDataContainer";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
+const labels =  ["Horizontal Position [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"]
+const titles =  ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal Acceleration", "Vertical Acceleration"]
+
 
 const linspace = (a, b, n) => {
     if (typeof n === "undefined") n = Math.max(Math.round(b - a) + 1, 1);
@@ -17,6 +20,8 @@ const linspace = (a, b, n) => {
     }
     return ret;
 };
+
+window.lins = linspace;
 
 class PlotContainer extends React.Component {
     constructor(props) {
@@ -61,7 +66,7 @@ class PlotContainer extends React.Component {
                     onChange={(update) => this.changeState(update)}
                 />
                 <div>
-                    <h1>Plots:</h1>
+                    <h1>Plots</h1>
                     <span> <Button
                         color="primary"
                         onClick={() => this.plot()}
@@ -83,11 +88,26 @@ class PlotContainer extends React.Component {
                                                 {
                                                     x: linspace(t_min, t_max, t_steps),
                                                     y: plot,
-                                                    type: 'scatter',
+                                                    type: 'scatter'
                                                 },
 
                                             ] : []}
-                                            layout={{width: 520, height: 540, title: `Plot ${i + 1}`}}
+                                            layout={{
+                                                width: 520,
+                                                height: 540,
+                                                title: titles[i],
+                                                showLegend: true,
+                                                yaxis: {
+                                                    title: {
+                                                        text: labels[i]
+                                                    }
+                                                },
+                                                 xaxis: {
+                                                    title: {
+                                                        text: 't'
+                                                    }
+                                                }
+                                            }}
                                         />
                                     )
                                 })

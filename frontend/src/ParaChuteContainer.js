@@ -67,7 +67,7 @@ class ParaChuteContainer extends React.Component {
             chutes,
         } = this.state;
         return (
-            <div><h1>Parachutes:</h1>
+            <div><h1>Parachutes</h1>
                     <Grid container direction="row" justify="flex-start"
                           alignItems="flex-start">
                         {

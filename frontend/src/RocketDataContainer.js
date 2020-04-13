@@ -23,7 +23,7 @@ class RocketDataContainer extends React.Component {
         const rocketData = this.state.rocketData;
         return (
             <div>
-                <h1>Rocket Configuration:</h1>
+                <h1>Rocket Configuration</h1>
 
                  <div style={{flexGrow: 1}}>
 
