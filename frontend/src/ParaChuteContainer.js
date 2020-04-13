@@ -18,15 +18,15 @@ class ParaChuteContainer extends React.Component {
 
     renderNewButton() {
         return (
-                <Button
-                    color="primary"
-                    className={this.props.styles.newChuteButton}
-                    onClick={() => this.addChute()}
-                >
-                    <div>
-                        <AddIcon/>
-                    </div>
-                </Button>
+            <Button
+                style={{marginTop: 20}}
+                variant="contained"
+
+                className={this.props.styles.newChuteButton}
+                onClick={() => this.addChute()}
+                startIcon={<AddIcon/>}
+            >
+            </Button>
         );
     }
 
@@ -57,7 +57,7 @@ class ParaChuteContainer extends React.Component {
         this.update(chutes)
     }
 
-    update(chutes){
+    update(chutes) {
         this.props.update(chutes);
     }
 
@@ -68,7 +68,6 @@ class ParaChuteContainer extends React.Component {
         } = this.state;
         return (
             <div><h1>Parachutes:</h1>
-                <div className={this.props.styles.containerbg}>
                     <Grid container direction="row" justify="flex-start"
                           alignItems="flex-start">
                         {
@@ -87,7 +86,6 @@ class ParaChuteContainer extends React.Component {
                             {this.renderNewButton()}
                         </Grid>
                     </Grid>
-                </div>
             </div>)
     }
 }

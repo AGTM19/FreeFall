@@ -22,9 +22,13 @@ class RocketDataContainer extends React.Component {
     render() {
         const rocketData = this.state.rocketData;
         return (
-            <div style={{flexGrow: 0}}>
+            <div>
                 <h1>Rocket Configuration:</h1>
-                <Grid container
+
+                 <div style={{flexGrow: 1}}>
+
+
+                    <Grid container
                       direction="column"
                       alignItems="flex-start"
                 >
@@ -62,6 +66,9 @@ class RocketDataContainer extends React.Component {
                                value={rocketData.vel_y}
                     />
                 </Grid>
+
+            </div>
+
             </div>
         );
     }

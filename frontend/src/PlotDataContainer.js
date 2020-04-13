@@ -19,13 +19,18 @@ class PlotDataContainer extends React.Component {
 
     render() {
         return (
-             <div style={{flexGrow: 0}}>
-                  <h1>Plot Configuration:</h1>
-                <Grid container
+
+            <div>
+                <h1>Plot Configuration:</h1>
+                 <div style={{flexGrow: 1}}>
+
+
+                    <Grid container
                       direction="column"
                       alignItems="flex-start"
+                          wrap="wrap"
                 >
-                     <TextField
+                         <TextField item
                         label="t_min"
                         type="number"
                         value={this.state.t_min}
@@ -34,7 +39,7 @@ class PlotDataContainer extends React.Component {
                             shrink: true,
                         }}
                     />
-                    <TextField
+                    <TextField item
                         label="t_max"
                         type="number"
                         value={this.state.t_max}
@@ -43,7 +48,7 @@ class PlotDataContainer extends React.Component {
                             shrink: true,
                         }}
                     />
-                    <TextField
+                    <TextField item
                         label="t_steps"
                         type="number"
                         value={this.state.t_steps}
@@ -53,6 +58,9 @@ class PlotDataContainer extends React.Component {
                         }}
                     />
                 </Grid>
+
+
+            </div>
             </div>);
     }
 

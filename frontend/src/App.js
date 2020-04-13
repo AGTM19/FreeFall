@@ -42,11 +42,11 @@ const useStyles = makeStyles(theme => ({
         padding: 100,
         flexGrow: 1
     },
-     paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
 }));
 
 
@@ -87,36 +87,36 @@ export default function App() {
 
 
     return (
-         <div style={{flexGrow: 1, margin: 50}}>
-      <Grid container spacing={3}>
-        <Grid xs item>
-           <RocketDataContainer
-                    styles={classes}
-                    initialConfig={data.rocketData}
-                    update={(x) => update({rocketData: x})}
-                />
-        </Grid>
-        <Grid item xs>
-          <ChuteSizeContaier
-                    styles={classes}
-                />
-        </Grid>
-        <Grid item xs={12}>
-           <ParaChuteContainer
-                    styles={classes}
-                    update={(x) => update({chutes: x})}
-                    chutes={data.chutes}
-                />
-        </Grid>
-        <Grid item xs={12}>
-           <PlotContainer
-                    styles={classes}
-                    initialConfig={dataMock.plot_default_config}
-                    update={(x) => update({plotData: x})}
-                    solve={() => solve()}
-                />
-        </Grid>
-      </Grid>
-    </div>
+        <div style={{flexGrow: 1, margin: 50}}>
+            <Grid container spacing={3}>
+                <Grid sm={12} md={3} item>
+                    <RocketDataContainer
+                        styles={classes}
+                        initialConfig={data.rocketData}
+                        update={(x) => update({rocketData: x})}
+                    />
+                </Grid>
+                <Grid item sm={12} md={3}>
+                    <ChuteSizeContaier
+                        styles={classes}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <ParaChuteContainer
+                        styles={classes}
+                        update={(x) => update({chutes: x})}
+                        chutes={data.chutes}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <PlotContainer
+                        styles={classes}
+                        initialConfig={dataMock.plot_default_config}
+                        update={(x) => update({plotData: x})}
+                        solve={() => solve()}
+                    />
+                </Grid>
+            </Grid>
+        </div>
     );
 }

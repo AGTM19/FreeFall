@@ -2,6 +2,7 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 import PlotDataContainer from "./PlotDataContainer";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 
 const linspace = (a, b, n) => {
@@ -32,7 +33,7 @@ class PlotContainer extends React.Component {
         this.props.update(plotConfig);
     }
 
-    plot(){
+    plot() {
         this.props
             .solve()
             .then((plotData) => {
@@ -54,7 +55,7 @@ class PlotContainer extends React.Component {
         return (
 
             <div>
-                  <PlotDataContainer
+                <PlotDataContainer
                     styles={this.props.styles}
                     initialConfig={this.state.plotConfig}
                     onChange={(update) => this.changeState(update)}
@@ -62,37 +63,49 @@ class PlotContainer extends React.Component {
                 <div>
                     <h1>Plots:</h1>
                     <span> <Button
-                            color="primary"
-                            onClick={() => this.plot()}
-                        >solve</Button></span>
-                    <div
-                        className={this.props.styles.containerbg}>
-                        {
-                            plotData.map((plot, i) => {return(
-                                <Plot
-                                    key={Math.random()}
-                                    data={plotData ? [
-                                        {
-                                            x: linspace(t_min, t_max, t_steps),
-                                            y: plot,
-                                            type: 'scatter',
-                                        },
+                        color="primary"
+                        onClick={() => this.plot()}
+                    >solve</Button></span>
 
-                                    ] : []}
-                                    layout={{width: 520, height: 540, title: `Plot ${i+1}`}}
-                                />
-                            )})
-                        }
+                    <div style={{flexGrow: 1}}>
+                        <Grid container
+                              direction="row"
+                              alignItems="flex-start"
+                        >
+
+
+                            {
+                                plotData.map((plot, i) => {
+                                    return (
+                                        <Plot item xs={12} sm={6} md={4}
+                                            key={Math.random()}
+                                            data={plotData ? [
+                                                {
+                                                    x: linspace(t_min, t_max, t_steps),
+                                                    y: plot,
+                                                    type: 'scatter',
+                                                },
+
+                                            ] : []}
+                                            layout={{width: 520, height: 540, title: `Plot ${i + 1}`}}
+                                        />
+                                    )
+                                })
+                            }
+
+                        </Grid>
+
                     </div>
+
                 </div>
 
 
             </div>
-    );
+        );
     }
 
 
-    }
+}
 
 
-    export default PlotContainer;
+export default PlotContainer;

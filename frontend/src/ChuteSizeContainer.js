@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 
 class ChuteSizeContaier extends React.Component {
@@ -17,12 +18,12 @@ class ChuteSizeContaier extends React.Component {
         this.changeHandler = this.changeHandler.bind(this);
     }
 
-    round(num){ // https://stackoverflow.com/a/11832950/3080611
+    round(num) { // https://stackoverflow.com/a/11832950/3080611
         return Math.round(num * 1000) / 1000;
     }
 
     changeHandler(event) {
-        const { target: { name, value } } = event;
+        const {target: {name, value}} = event;
         this.setState({[name]: value});
         if (name === "a_max") {
             const mass = this.state.cw * this.state.a_max;
@@ -37,9 +38,15 @@ class ChuteSizeContaier extends React.Component {
 
     render() {
         return (
-            <div><h1>Chute Size Calculator:</h1>
-                <div className={this.props.styles.containerbg}>
-                    <Paper className={this.props.styles.chuteBG}>
+            <div>
+                <h1>Chute Size Calculator:</h1>
+                <div style={{flexGrow: 1}}>
+
+
+                    <Grid container
+                          direction="column"
+                          alignItems="flex-start"
+                    >
                         <TextField
                             name="cw"
                             label="Widerstandsbeiwert"
@@ -70,8 +77,11 @@ class ChuteSizeContaier extends React.Component {
                                 shrink: true,
                             }}
                         />
-                    </Paper>
+                    </Grid>
+
                 </div>
+
+
             </div>)
     }
 }

@@ -34,7 +34,7 @@ class ParaChute extends React.Component {
                         shrink: true,
                     }}
                 />
-                  <span><Button color="primary" onClick={deleteChute}>
+                  <span><Button onClick={deleteChute}>
                 <div>
                     <CloseIcon/>
                 </div>
