@@ -36,6 +36,11 @@ class PlotContainer extends React.Component {
         this.props
             .solve()
             .then((plotData) => {
+                console.log(plotData.length);
+                console.log(plotData[0].length);
+                const x = plotData[0].map(x => isNaN(x) ? 1.111 : x);
+                console.log(Math.min(...x));
+                console.log(Math.max(...x));
                 this.setState({plotData});
             });
     }

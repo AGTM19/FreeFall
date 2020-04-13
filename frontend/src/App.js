@@ -6,6 +6,7 @@ import RocketDataContainer from "./RocketDataContainer";
 import PlotContainer from "./PlotContainer";
 import dataMock from "./datamock";
 import PataChuteSolverRequests from './actions/ParachuteSolverRequests';
+import ChuteSizeContaier from "./ChuteSizeContainer";
 
 
 // https://material-ui.com/components/text-fields/
@@ -54,6 +55,10 @@ export default function App() {
     const solve = () => {
         return solver.solve(data.chutes, data.rocketData, data.plotData)
             .then(res => {
+                if (!res || !res.body || res.body.plotData === undefined) {
+                    console.error('error in received result.');
+                    console.error(`res: ${res}`);
+                }
                 if (res.error) {
                     console.log('error on solve');
                     console.error(res.error);
@@ -81,6 +86,9 @@ export default function App() {
                 initialConfig={data.rocketData}
                 update={(x) => update({rocketData: x})}
             />
+              <ChuteSizeContaier
+                styles={classes}
+            />
 
             <ParaChuteContainer
                 styles={classes}
@@ -93,6 +101,7 @@ export default function App() {
                 update={(x) => update({plotData: x})}
                 solve={() => solve()}
             />
+
         </div>
     );
 }
