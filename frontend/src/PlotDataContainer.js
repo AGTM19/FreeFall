@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Grid from "@material-ui/core/Grid";
 
 
 class PlotDataContainer extends React.Component {
@@ -18,10 +19,13 @@ class PlotDataContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Plot Configuration:</h1>
-                <div className={this.props.styles.containerbg}>
-                    <TextField
+             <div style={{flexGrow: 0}}>
+                  <h1>Plot Configuration:</h1>
+                <Grid container
+                      direction="column"
+                      alignItems="flex-start"
+                >
+                     <TextField
                         label="t_min"
                         type="number"
                         value={this.state.t_min}
@@ -48,7 +52,7 @@ class PlotDataContainer extends React.Component {
                             shrink: true,
                         }}
                     />
-                </div>
+                </Grid>
             </div>);
     }
 

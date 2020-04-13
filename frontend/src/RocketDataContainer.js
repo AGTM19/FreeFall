@@ -1,5 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Grid from "@material-ui/core/Grid";
+import {Paper} from "@material-ui/core";
 
 
 class RocketDataContainer extends React.Component {
@@ -20,47 +22,49 @@ class RocketDataContainer extends React.Component {
     render() {
         const rocketData = this.state.rocketData;
         return (
-            <div>
+            <div style={{flexGrow: 0}}>
                 <h1>Rocket Configuration:</h1>
-                <div className={this.props.styles.containerbg}>
-                    <TextField
-                        label="Masse der Rakete"
-                        type="number"
-                        onChange={e => this.changeState({ mass: e.target.value })}
-                        value={rocketData.mass}
+                <Grid container
+                      direction="column"
+                      alignItems="flex-start"
+                >
+                    <TextField item
+                               label="Masse der Rakete"
+                               type="number"
+                               onChange={e => this.changeState({mass: e.target.value})}
+                               value={rocketData.mass}
                     />
-                    <TextField
-                        label="pos_x"
-                        type="number"
-                        onChange={e => this.changeState({ pos_x: e.target.value })}
-                        value={rocketData.pos_x}
+                    <TextField item
+                               label="pos_x"
+                               type="number"
+                               onChange={e => this.changeState({pos_x: e.target.value})}
+                               value={rocketData.pos_x}
 
                     />
-                    <TextField
-                        label="pos_y"
-                        type="number"
-                        onChange={e => this.changeState({ pos_y: e.target.value })}
-                        value={rocketData.pos_y}
+                    <TextField item
+                               label="pos_y"
+                               type="number"
+                               onChange={e => this.changeState({pos_y: e.target.value})}
+                               value={rocketData.pos_y}
 
                     />
-                    <TextField
-                        label="vel_x"
-                        type="number"
-                        onChange={e => this.changeState({ vel_x: e.target.value })}
-                        value={rocketData.vel_x}
+                    <TextField item
+                               label="vel_x"
+                               type="number"
+                               onChange={e => this.changeState({vel_x: e.target.value})}
+                               value={rocketData.vel_x}
 
                     />
-                    <TextField
-                        label="vel_y"
-                        type="number"
-                        onChange={e => this.changeState({ vel_y: e.target.value })}
-                        value={rocketData.vel_y}
+                    <TextField item
+                               label="vel_y"
+                               type="number"
+                               onChange={e => this.changeState({vel_y: e.target.value})}
+                               value={rocketData.vel_y}
                     />
-                </div>
-            </div>);
+                </Grid>
+            </div>
+        );
     }
-
-
 }
 
 export default RocketDataContainer;
