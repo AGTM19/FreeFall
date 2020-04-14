@@ -19,13 +19,14 @@ class ParaChuteContainer extends React.Component {
     renderNewButton() {
         return (
             <Button
-                style={{marginTop: 20}}
+                style={{marginTop: 20, height: 100, width: 100}}
                 variant="contained"
 
                 className={this.props.styles.newChuteButton}
                 onClick={() => this.addChute()}
-                startIcon={<AddIcon/>}
+
             >
+                <AddIcon/>
             </Button>
         );
     }
