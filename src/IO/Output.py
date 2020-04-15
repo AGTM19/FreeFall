@@ -10,14 +10,14 @@ class Output:
         for index in range(x.shape[1]):
             pl.figure(index + 1)
             vec = x[:, index]
-            fraction = 4
+            fraction = 1
             pl.plot(t[::fraction], vec[::fraction])
             pl.xlabel('Time [s]')
             pl.ylabel(ylabel[index])
             pl.title(title[index])
             #pl.legend()
             pl.grid(True)
-            pl.savefig(title[index] + ".png")
+            #pl.savefig(title[index] + ".png")
             #tikzplotlib.save(title[index] + ".tex")
         pl.show()
 
