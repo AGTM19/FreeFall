@@ -1,16 +1,24 @@
 import matplotlib.pyplot as pl
+import tikzplotlib
 
-ylabel = ["Horizontal Position [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"]
-
+ylabel = ["X-Position [m]", "Y-Position [m]", "X-Velocity [m/s]", "Y-Velocity [m/s]", "X-acceleration [m/s²]", "Y-acceleration [m/s²]"]
+title = ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal acceleration", "Vertical acceleration"]
 class Output:
 
     @staticmethod
     def visualize(x, t):
         for index in range(x.shape[1]):
             pl.figure(index + 1)
-            pl.plot(t, x[:, index])
+            vec = x[:, index]
+            fraction = 4
+            pl.plot(t[::fraction], vec[::fraction])
             pl.xlabel('Time [s]')
             pl.ylabel(ylabel[index])
+            pl.title(title[index])
             #pl.legend()
             pl.grid(True)
+            pl.savefig(title[index] + ".png")
+            #tikzplotlib.save(title[index] + ".tex")
         pl.show()
+
+

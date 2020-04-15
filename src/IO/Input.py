@@ -16,20 +16,20 @@ class Input:
     chutes = [
         Chute(
             name="Chute1",
-            A_max=2.5,
-            cw=0.8,
+            A_max=1.8,
+            cw=1.5,
             openingHeight=20000,
             cutHeght=2000,
             openingDelay=2,
             openingDuration=0.5),
         Chute(
             name="Chute2",
-            A_max=20,
+            A_max=18,
             cw=2.2,
             openingHeight=2000,
             cutHeght=-1,
             openingDelay=2,
-            openingDuration=1.5)
+            openingDuration=1.0)
     ]
     drag_manager = None
 

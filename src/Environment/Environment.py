@@ -7,7 +7,7 @@ class Environment:
     h0 = 0  # m
     t0 = 288.15  # K
     p0 = 1  # kg / (m * s**2)
-    rho0 = 1.225  # kg / m**3
+    rho0 = 1.184 #1.225  # kg / m**3
     g0 = 9.807  # m / s**2
     kappa = 1.402  # -
     mol = 0.02896  # kg / mol
