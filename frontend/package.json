@@ -17,7 +17,8 @@
     "react-dom": "latest",
     "react-plotly.js": "^2.4.0",
     "react-scripts": "latest",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "typeface-roboto": "0.0.75"
   },
   "browserslist": {
     "production": [

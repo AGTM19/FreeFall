@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import ParaChute from "./ParaChute";
+import Typography from "@material-ui/core/Typography";
 
 
 class ParaChuteContainer extends React.Component {
@@ -19,13 +20,14 @@ class ParaChuteContainer extends React.Component {
     renderNewButton() {
         return (
             <Button
-                style={{marginTop: 20}}
+                style={{height: 100, width: 100, borderRadius: 10}}
                 variant="contained"
 
                 className={this.props.styles.newChuteButton}
                 onClick={() => this.addChute()}
-                startIcon={<AddIcon/>}
+
             >
+                <AddIcon/>
             </Button>
         );
     }
@@ -67,7 +69,7 @@ class ParaChuteContainer extends React.Component {
             chutes,
         } = this.state;
         return (
-            <div><h1>Parachutes</h1>
+            <div><Typography variant="h5" style={{marginBottom: 8}}>Parachutes</Typography>
                     <Grid container direction="row" justify="flex-start"
                           alignItems="flex-start">
                         {

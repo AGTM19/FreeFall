@@ -3,9 +3,13 @@ import Plot from 'react-plotly.js';
 import PlotDataContainer from "./PlotDataContainer";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import PlotIcon from "@material-ui/icons/Assessment"
+import RefreshIcon from "@material-ui/icons/Refresh"
+import Typography from "@material-ui/core/Typography";
 
-const labels =  ["Horizontal Position [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"]
-const titles =  ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal Acceleration", "Vertical Acceleration"]
+const labels = ["Horizontal Position [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"];
+const titles = ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal Acceleration", "Vertical Acceleration"];
 
 
 const linspace = (a, b, n) => {
@@ -29,6 +33,10 @@ class PlotContainer extends React.Component {
         this.state = {
             plotConfig: this.props.initialConfig,
             plotData: [],
+            loading: false,
+            buttonLabel: 'solve',
+            buttonIcon: PlotIcon,
+            error: null,
         };
     }
 
@@ -39,16 +47,23 @@ class PlotContainer extends React.Component {
     }
 
     plot() {
+        this.setState({loading: true, buttonLabel: 'refresh plots', buttonIcon: RefreshIcon, error: null, plotData: []});
         this.props
             .solve()
             .then((plotData) => {
+                if(!plotData){
+                    throw Error('no plot data received')
+                }
                 console.log(plotData.length);
                 console.log(plotData[0].length);
                 const x = plotData[0].map(x => isNaN(x) ? 1.111 : x);
                 console.log(Math.min(...x));
                 console.log(Math.max(...x));
-                this.setState({plotData});
-            });
+                this.setState({plotData, loading: false, error: null});
+            })
+            .catch((err) => {
+                this.setState({error: err && err.message ? err.message : 'could not load plots', loading: false});
+            })
     }
 
 
@@ -56,7 +71,10 @@ class PlotContainer extends React.Component {
         const {
             t_max, t_min, t_steps
         } = this.state.plotConfig;
-        const plotData = this.state.plotData;
+        const {
+            plotData,
+            loading,
+        } = this.state;
         return (
 
             <div>
@@ -65,57 +83,71 @@ class PlotContainer extends React.Component {
                     initialConfig={this.state.plotConfig}
                     onChange={(update) => this.changeState(update)}
                 />
-                <div>
-                    <h1>Plots</h1>
-                    <span> <Button
+                <div style={{marginTop: 40}}>
+                    <Typography variant="h5" style={{marginBottom: 8}}>Plots</Typography>
+                    {!loading &&
+                    <Button
                         color="primary"
+                        variant="contained"
                         onClick={() => this.plot()}
-                    >solve</Button></span>
+                        startIcon={<this.state.buttonIcon/>}
+                    >
+                        {this.state.buttonLabel}
+                    </Button>
+                    }
+                    {loading && <CircularProgress/>}
+                    {this.state.error &&
+                    <div><Typography color="error" variant="caption">Error: {this.state.error}</Typography></div>
+                    }
+                    {
+                        !loading &&
 
-                    <div style={{flexGrow: 1}}>
-                        <Grid container
-                              direction="row"
-                              alignItems="flex-start"
-                        >
+                        <div style={{flexGrow: 1}}>
+                            <Grid container
+                                  direction="row"
+                                  alignItems="flex-start"
+                            >
 
 
-                            {
-                                plotData.map((plot, i) => {
-                                    return (
-                                        <Plot item xs={12} sm={6} md={4}
-                                            key={Math.random()}
-                                            data={plotData ? [
-                                                {
-                                                    x: linspace(t_min, t_max, t_steps),
-                                                    y: plot,
-                                                    type: 'scatter'
-                                                },
+                                {
+                                    plotData.map((plot, i) => {
+                                        return (
+                                            <Plot item xs={12} sm={4} md={3}
+                                                  style={{margin:20}}
+                                                  key={Math.random()}
+                                                  data={plotData ? [
+                                                      {
+                                                          x: linspace(t_min, t_max, t_steps),
+                                                          y: plot,
+                                                          type: 'scatter'
+                                                      },
 
-                                            ] : []}
-                                            layout={{
-                                                width: 520,
-                                                height: 540,
-                                                title: titles[i],
-                                                showLegend: true,
-                                                yaxis: {
-                                                    title: {
-                                                        text: labels[i]
-                                                    }
-                                                },
-                                                 xaxis: {
-                                                    title: {
-                                                        text: 't'
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    )
-                                })
-                            }
+                                                  ] : []}
+                                                  layout={{
+                                                      width: 520,
+                                                      height: 540,
+                                                      title: titles[i],
+                                                      showLegend: true,
+                                                      yaxis: {
+                                                          title: {
+                                                              text: labels[i]
+                                                          }
+                                                      },
+                                                      xaxis: {
+                                                          title: {
+                                                              text: 't'
+                                                          }
+                                                      }
+                                                  }}
+                                            />
+                                        )
+                                    })
+                                }
 
-                        </Grid>
+                            </Grid>
 
-                    </div>
+                        </div>
+                    }
 
                 </div>
 

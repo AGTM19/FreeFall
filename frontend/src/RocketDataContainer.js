@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from "@material-ui/core/Grid";
 import {Paper} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 
 class RocketDataContainer extends React.Component {
@@ -23,7 +24,9 @@ class RocketDataContainer extends React.Component {
         const rocketData = this.state.rocketData;
         return (
             <div>
-                <h1>Rocket Configuration</h1>
+                <Typography variant="h5" style={{marginBottom: 8}}>
+                Rocket Configuration
+                </Typography>
 
                  <div style={{flexGrow: 1}}>
 
@@ -33,7 +36,7 @@ class RocketDataContainer extends React.Component {
                       alignItems="flex-start"
                 >
                     <TextField item
-                               label="Masse der Rakete"
+                               label="Mass"
                                type="number"
                                onChange={e => this.changeState({mass: e.target.value})}
                                value={rocketData.mass}
