@@ -18,9 +18,9 @@ class ChuteManager:
 
     def correctChuteHeights(self, chute):
         if not self.chutes:
-            print("No chutes yet")
+            #print("No chutes yet")
             return
-        print("There are already ", len(self.chutes), " Chutes")
+        #print("There are already ", len(self.chutes), " Chutes")
         c = self.chutes[len(self.chutes) - 1]
         if c.cutHeight < chute.openingHeight:
             chute.openingHeight = c.cutHeight
