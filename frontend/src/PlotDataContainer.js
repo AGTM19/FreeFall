@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 
 class PlotDataContainer extends React.Component {
@@ -21,7 +22,7 @@ class PlotDataContainer extends React.Component {
         return (
 
             <div>
-                <h1>Plot Configuration</h1>
+                <Typography variant="h5" style={{marginBottom: 8}}>Plot Configuration</Typography>
                  <div style={{flexGrow: 1}}>
 
 

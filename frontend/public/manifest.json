@@ -1,10 +1,10 @@
 {
-  "short_name": "Your Orders",
-  "name": "Your Orders",
+  "short_name": "Parachute Solver",
+  "name": "Parachute Solver",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64 32x32 24x24 16x16 256x256",
       "type": "image/x-icon"
     }
   ],

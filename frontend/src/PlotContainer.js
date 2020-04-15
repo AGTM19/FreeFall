@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import PlotIcon from "@material-ui/icons/Assessment"
 import RefreshIcon from "@material-ui/icons/Refresh"
+import Typography from "@material-ui/core/Typography";
 
 const labels = ["Horizontal Position [m]", "Height [m]", "Horizontal Velocity [m/s]", "Vertical Velocity [m/s]", "Horizontal acceleration [m/s²]", "Vertical acceleration [m/s²]"];
 const titles = ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal Acceleration", "Vertical Acceleration"];
@@ -34,7 +35,8 @@ class PlotContainer extends React.Component {
             plotData: [],
             loading: false,
             buttonLabel: 'solve',
-            buttonIcon: PlotIcon
+            buttonIcon: PlotIcon,
+            error: null,
         };
     }
 
@@ -45,17 +47,23 @@ class PlotContainer extends React.Component {
     }
 
     plot() {
-        this.setState({loading: true, buttonLabel: 'refresh plots', buttonIcon: RefreshIcon});
+        this.setState({loading: true, buttonLabel: 'refresh plots', buttonIcon: RefreshIcon, error: null, plotData: []});
         this.props
             .solve()
             .then((plotData) => {
+                if(!plotData){
+                    throw Error('no plot data received')
+                }
                 console.log(plotData.length);
                 console.log(plotData[0].length);
                 const x = plotData[0].map(x => isNaN(x) ? 1.111 : x);
                 console.log(Math.min(...x));
                 console.log(Math.max(...x));
-                this.setState({plotData, loading: false});
-            });
+                this.setState({plotData, loading: false, error: null});
+            })
+            .catch((err) => {
+                this.setState({error: err && err.message ? err.message : 'could not load plots', loading: false});
+            })
     }
 
 
@@ -75,8 +83,8 @@ class PlotContainer extends React.Component {
                     initialConfig={this.state.plotConfig}
                     onChange={(update) => this.changeState(update)}
                 />
-                <div>
-                    <h1>Plots</h1>
+                <div style={{marginTop: 40}}>
+                    <Typography variant="h5" style={{marginBottom: 8}}>Plots</Typography>
                     {!loading &&
                     <Button
                         color="primary"
@@ -88,6 +96,9 @@ class PlotContainer extends React.Component {
                     </Button>
                     }
                     {loading && <CircularProgress/>}
+                    {this.state.error &&
+                    <div><Typography color="error" variant="caption">Error: {this.state.error}</Typography></div>
+                    }
                     {
                         !loading &&
 
@@ -101,7 +112,8 @@ class PlotContainer extends React.Component {
                                 {
                                     plotData.map((plot, i) => {
                                         return (
-                                            <Plot item xs={12} sm={6} md={4}
+                                            <Plot item xs={12} sm={4} md={3}
+                                                  style={{margin:20}}
                                                   key={Math.random()}
                                                   data={plotData ? [
                                                       {
