@@ -2,5 +2,4 @@ bokeh
 numpy
 matplotlib
 scipy
-matplotlib2tikz
 tikzplotlib
