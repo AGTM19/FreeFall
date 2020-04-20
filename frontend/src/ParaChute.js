@@ -51,37 +51,37 @@ class ParaChute extends React.Component {
                 <TextField
                     label="A_max"
                     type="number"
-                    onChange={e => this.changeState({A_max: e.target.value})}
+                    onChange={e => this.changeState({A_max: parseInt(e.target.value)})}
                     value={chuteData.A_max}
                 />
                 <TextField
                     label="cw"
                     type="number"
-                    onChange={e => this.changeState({cw: e.target.value})}
+                    onChange={e => this.changeState({cw: parseInt(e.target.value)})}
                     value={chuteData.cw}
                 />
                 <TextField
                     label="opening height"
                     type="number"
-                    onChange={e => this.changeState({openingHeight: e.target.value})}
+                    onChange={e => this.changeState({openingHeight: parseInt(e.target.value)})}
                     value={chuteData.openingHeight}
                 />
                 <TextField
                     label="cut height"
                     type="number"
-                    onChange={e => this.changeState({cutHeight: e.target.value})}
+                    onChange={e => this.changeState({cutHeight: parseInt(e.target.value)})}
                     value={chuteData.cutHeight}
                 />
                 <TextField
                     label="opening delay"
                     type="number"
-                    onChange={e => this.changeState({openingDelay: e.target.value})}
+                    onChange={e => this.changeState({openingDelay: parseInt(e.target.value)})}
                     value={chuteData.openingDelay}
                 />
                 <TextField
                     label="opening duration"
                     type="number"
-                    onChange={e => this.changeState({openingDuration: e.target.value})}
+                    onChange={e => this.changeState({openingDuration: parseInt(e.target.value)})}
                     value={chuteData.openingDuration}
                 />
             </Paper>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -24,7 +23,8 @@ class ChuteSizeContaier extends React.Component {
 
     changeHandler(event) {
         const {target: {name, value}} = event;
-        this.setState({[name]: value});
+        const parsedValue = parseInt(value);
+        this.setState({[name]: parsedValue});
         if (name === "a_max") {
             const mass = this.state.cw * this.state.a_max;
             this.setState({mass: this.round(mass)});

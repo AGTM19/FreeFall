@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from "@material-ui/core/Grid";
-import {Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
 
@@ -38,34 +37,34 @@ class RocketDataContainer extends React.Component {
                     <TextField item
                                label="Mass"
                                type="number"
-                               onChange={e => this.changeState({mass: e.target.value})}
+                               onChange={e => this.changeState({mass: parseInt(e.target.value)})}
                                value={rocketData.mass}
                     />
                     <TextField item
                                label="pos_x"
                                type="number"
-                               onChange={e => this.changeState({pos_x: e.target.value})}
+                               onChange={e => this.changeState({pos_x: parseInt(e.target.value)})}
                                value={rocketData.pos_x}
 
                     />
                     <TextField item
                                label="pos_y"
                                type="number"
-                               onChange={e => this.changeState({pos_y: e.target.value})}
+                               onChange={e => this.changeState({pos_y: parseInt(e.target.value)})}
                                value={rocketData.pos_y}
 
                     />
                     <TextField item
                                label="vel_x"
                                type="number"
-                               onChange={e => this.changeState({vel_x: e.target.value})}
+                               onChange={e => this.changeState({vel_x: parseInt(e.target.value)})}
                                value={rocketData.vel_x}
 
                     />
                     <TextField item
                                label="vel_y"
                                type="number"
-                               onChange={e => this.changeState({vel_y: e.target.value})}
+                               onChange={e => this.changeState({vel_y: parseInt(e.target.value)})}
                                value={rocketData.vel_y}
                     />
                 </Grid>

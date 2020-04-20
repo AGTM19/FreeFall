@@ -33,24 +33,18 @@ def solve():
     drag_manager = DragManager(rocket_manager, chute_manager)
     rocket_x0 = [rocket_data['pos_x'], rocket_data['pos_y'], rocket_data['vel_x'], rocket_data['vel_y']]
     # plot_data = params['plotData']
-    t = np.linspace(0, 170, 10000)
-    _, x = Solver.solve(rocket_x0, t, rocket_manager.mass, drag_manager)
+    plot_config = params['plotConfig']
+    print(plot_config)
+    t = np.linspace(plot_config['t_min'], plot_config['t_max'], plot_config['t_steps'])
+    t, x = Solver.solve(rocket_x0, t, rocket_manager.mass, drag_manager)
     x = x.transpose().tolist()
-    y = []
-
-    for i, col in enumerate(x):
-        new_col = []
-        for j, val in enumerate(col):
-            if not math.isfinite(val):
-                new_col.append(0)
-            else:
-                new_col.append(val)
-        y.append(new_col)
+    t = t.transpose().tolist()
 
     return jsonify({
         'message': 'Hello World',
         'error': None,
-        'plotData': y
+        'plotData': x,
+        't': t
     })
 
 

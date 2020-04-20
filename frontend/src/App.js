@@ -62,7 +62,7 @@ function App() {
     };
 
     const solve = () => {
-        return solver.solve(data.chutes, data.rocketData, data.plotData)
+        return solver.solve(data.chutes, data.rocketData, data.plotConfig)
             .then(res => {
                 if (!res || !res.body || res.body.plotData === undefined) {
                     console.error('error in received result.');
@@ -71,10 +71,13 @@ function App() {
                 if (res.error) {
                     console.log('error on solve');
                     console.error(res.error);
-                    return;
+                    throw res.err;
                 }
-                data.plotData = res.body.plotData;
-                return data.plotData;
+
+                return {
+                    'plotData': res.body.plotData,
+                    't': res.body.t
+                };
             })
             .catch((err) => {
                 console.error(err);
@@ -83,7 +86,11 @@ function App() {
 
 
     const update = (update) => {
+        console.log('updating ');
+        console.log(Object.keys(update));
+        console.log(data.rocketData);
         data = {...data, ...update};
+        console.log(data.rocketData)
     };
 
 
@@ -124,7 +131,7 @@ function App() {
                     <PlotContainer
                         styles={classes}
                         initialConfig={dataMock.plot_default_config}
-                        update={(x) => update({plotData: x})}
+                        update={(x) => update({plotConfig: x})}
                         solve={() => solve()}
                     />
                 </Grid>

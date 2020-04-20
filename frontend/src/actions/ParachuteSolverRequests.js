@@ -3,10 +3,10 @@ import * as superagent from 'superagent'
 
 class ParachuteSolverRequests{
 
-    solve(chutes, rocketData, plotData){
+    solve(chutes, rocketData, plotConfig){
         return superagent
             .post('http://localhost:5000/solve')
-            .send({ chutes, rocketData, plotData })
+            .send({ chutes, rocketData, plotConfig })
     }
 
 }

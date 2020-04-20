@@ -33,6 +33,7 @@ class PlotContainer extends React.Component {
         this.state = {
             plotConfig: this.props.initialConfig,
             plotData: [],
+            t: [],
             loading: false,
             buttonLabel: 'solve',
             buttonIcon: PlotIcon,
@@ -41,25 +42,28 @@ class PlotContainer extends React.Component {
     }
 
     changeState(update) {
-        const plotConfig = {...this.state.plotConfig, ...update};
+        const plotConfig = {...this.state.plotConfig, ...update.plotConfig};// todo: here, plotconfig gets nested instead of replaced
+        console.log(plotConfig);
         this.setState({plotConfig});
         this.props.update(plotConfig);
     }
 
     plot() {
-        this.setState({loading: true, buttonLabel: 'refresh plots', buttonIcon: RefreshIcon, error: null, plotData: []});
+        this.setState({loading: true, buttonLabel: 'refresh plots', buttonIcon: RefreshIcon, error: null, plotData: [], t:[]});
         this.props
             .solve()
-            .then((plotData) => {
-                if(!plotData){
+            .then((result) => {
+                if(!result.plotData || !result.t){
+                    console.log(result);
                     throw Error('no plot data received')
                 }
+                const {t, plotData} = result;
                 console.log(plotData.length);
                 console.log(plotData[0].length);
                 const x = plotData[0].map(x => isNaN(x) ? 1.111 : x);
                 console.log(Math.min(...x));
                 console.log(Math.max(...x));
-                this.setState({plotData, loading: false, error: null});
+                this.setState({plotData, t, loading: false, error: null});
             })
             .catch((err) => {
                 this.setState({error: err && err.message ? err.message : 'could not load plots', loading: false});
@@ -81,7 +85,7 @@ class PlotContainer extends React.Component {
                 <PlotDataContainer
                     styles={this.props.styles}
                     initialConfig={this.state.plotConfig}
-                    onChange={(update) => this.changeState(update)}
+                    onChange={(update) => this.changeState({plotConfig: {...this.state.plotConfig, ...update}})}
                 />
                 <div style={{marginTop: 40}}>
                     <Typography variant="h5" style={{marginBottom: 8}}>Plots</Typography>
@@ -117,15 +121,13 @@ class PlotContainer extends React.Component {
                                                   key={Math.random()}
                                                   data={plotData ? [
                                                       {
-                                                          x: linspace(t_min, t_max, t_steps),
+                                                          x: this.state.t,
                                                           y: plot,
                                                           type: 'scatter'
                                                       },
 
                                                   ] : []}
                                                   layout={{
-                                                      width: 520,
-                                                      height: 540,
                                                       title: titles[i],
                                                       showLegend: true,
                                                       yaxis: {
@@ -135,7 +137,7 @@ class PlotContainer extends React.Component {
                                                       },
                                                       xaxis: {
                                                           title: {
-                                                              text: 't'
+                                                              text: 'Time [s]'
                                                           }
                                                       }
                                                   }}
