@@ -6,7 +6,7 @@ import RocketDataContainer from "./RocketDataContainer";
 import PlotContainer from "./PlotContainer";
 import dataMock from "./datamock";
 import PataChuteSolverRequests from './actions/ParachuteSolverRequests';
-import ChuteSizeContaier from "./ChuteSizeContainer";
+import ChuteSizeContainer from "./ChuteSizeContainer";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -113,7 +113,7 @@ function App() {
                             />
                         </Grid>
                         <Grid item sm={12} md={6} style={{}}>
-                            <ChuteSizeContaier
+                            <ChuteSizeContainer
                                 styles={classes}
                             />
                         </Grid>

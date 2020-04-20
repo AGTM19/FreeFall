@@ -35,35 +35,45 @@ class RocketDataContainer extends React.Component {
                       alignItems="flex-start"
                 >
                     <TextField item
-                               label="Mass"
+                               label="mass [kg]"
                                type="number"
+                               variant="outlined"
+                               style={{margin: 10}}
                                onChange={e => this.changeState({mass: parseInt(e.target.value)})}
                                value={rocketData.mass}
                     />
                     <TextField item
-                               label="pos_x"
+                               label="x position [m]"
                                type="number"
+                               variant="outlined"
+                               style={{margin: 10}}
                                onChange={e => this.changeState({pos_x: parseInt(e.target.value)})}
                                value={rocketData.pos_x}
 
                     />
                     <TextField item
-                               label="pos_y"
+                               label="y position [m]"
                                type="number"
+                               variant="outlined"
+                               style={{margin: 10}}
                                onChange={e => this.changeState({pos_y: parseInt(e.target.value)})}
                                value={rocketData.pos_y}
 
                     />
                     <TextField item
-                               label="vel_x"
+                               label="x velocity [m/s]"
                                type="number"
+                               variant="outlined"
+                               style={{margin: 10}}
                                onChange={e => this.changeState({vel_x: parseInt(e.target.value)})}
                                value={rocketData.vel_x}
 
                     />
                     <TextField item
-                               label="vel_y"
+                               label="y velocity [m/s]"
                                type="number"
+                               variant="outlined"
+                               style={{margin: 10}}
                                onChange={e => this.changeState({vel_y: parseInt(e.target.value)})}
                                value={rocketData.vel_y}
                     />

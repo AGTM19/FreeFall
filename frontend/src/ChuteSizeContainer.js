@@ -4,14 +4,17 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 
-class ChuteSizeContaier extends React.Component {
+class ChuteSizeContainer extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             cw: 0.9,
-            a_max: 3.0,
-            mass: 60
+            a: 3.0,
+            g: 9.807,
+            v: 80,
+            rho: 1.184,
+            mass: 60,
         };
 
         this.changeHandler = this.changeHandler.bind(this);
@@ -25,13 +28,13 @@ class ChuteSizeContaier extends React.Component {
         const {target: {name, value}} = event;
         const parsedValue = parseInt(value);
         this.setState({[name]: parsedValue});
-        if (name === "a_max") {
-            const mass = this.state.cw * this.state.a_max;
+        if (name === "a") {
+            const mass = this.state.cw * this.state.a;
             this.setState({mass: this.round(mass)});
         }
         if (name === "mass" || name === "cw") {
             const a = this.state.mass / this.state.cw;
-            this.setState({a_max: this.round(a)});
+            this.setState({a: this.round(a)});
         }
     }
 
@@ -47,32 +50,64 @@ class ChuteSizeContaier extends React.Component {
                           direction="column"
                           alignItems="flex-start"
                     >
+
+
+                        <TextField
+                            name="v"
+                            label="speed"
+                            type="number"
+                            variant="outlined"
+                            style={{margin: 10}}
+                            onChange={this.changeHandler}
+                            value={this.state.v}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                        <TextField
+                            name="g"
+                            label="g"
+                            type="number"
+                            variant="outlined"
+                            style={{margin: 10}}
+                            onChange={this.changeHandler}
+                            value={this.state.g}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                        <TextField
+                            name="rho"
+                            label="rho"
+                            type="number"
+                            variant="outlined"
+                            style={{margin: 10}}
+                            onChange={this.changeHandler}
+                            value={this.state.rho}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                        <TextField
+                            name="a"
+                            onChange={this.changeHandler}
+                            label="a"
+                            type="number"
+                            variant="outlined"
+                            style={{margin: 10}}
+                            value={this.state.a}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
                         <TextField
                             name="cw"
                             label="Widerstandsbeiwert"
                             type="number"
+                            variant="outlined"
+                            style={{margin: 10}}
                             value={Math.round(this.state.cw)}
                             onChange={this.changeHandler}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                        <TextField
-                            name="mass"
-                            label="Mass"
-                            type="number"
-                            onChange={this.changeHandler}
-                            value={this.state.mass}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                        <TextField
-                            name="a_max"
-                            onChange={this.changeHandler}
-                            label="A_max"
-                            type="number"
-                            value={this.state.a_max}
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -86,4 +121,4 @@ class ChuteSizeContaier extends React.Component {
     }
 }
 
-export default ChuteSizeContaier;
+export default ChuteSizeContainer;

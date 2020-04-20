@@ -27,7 +27,7 @@ class ParaChuteContainer extends React.Component {
                 onClick={() => this.addChute()}
 
             >
-                <AddIcon/>
+                <AddIcon color="primary"/>
             </Button>
         );
     }
