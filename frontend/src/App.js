@@ -99,7 +99,7 @@ function App() {
         <div className={classes.body}>
             {/* There is already an h1 in the page, let's not duplicate it. */}
             <Typography variant={isWide ? "h1" : "h3"} style={{marginBottom: 40}}>
-                <img src={logo} alt="logo" style={{width: 100, height: 100}}/> Parachute Solver
+                <img src={logo} alt="logo" style={{width: 100, height: 100}}/> Parachutes
             </Typography>
 
             <Grid container

@@ -86,7 +86,8 @@ class ChuteSizeContainer extends React.Component {
     render() {
         const {errors} = this.state;
         return (
-            <div>
+         <Paper style={{padding: 20}}>
+                <div>
                 <Typography variant="h5" style={{marginBottom: 8}}>Chute Size Calculator</Typography>
                 <div style={{flexGrow: 1}}>
 
@@ -228,7 +229,9 @@ class ChuteSizeContainer extends React.Component {
                 </div>
 
 
-            </div>)
+            </div>
+         </Paper>
+        )
     }
 }
 

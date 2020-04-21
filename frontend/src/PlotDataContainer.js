@@ -23,7 +23,7 @@ class PlotDataContainer extends React.Component {
         return (
 
             <div>
-                <Typography variant="h5" style={{marginBottom: 8}}>Plot Configuration</Typography>
+                <Typography variant="h5" style={{marginBottom: 8}}>Plot</Typography>
                 <div style={{flexGrow: 1}}>
 
 

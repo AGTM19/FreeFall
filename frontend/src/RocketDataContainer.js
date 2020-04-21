@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 
 class RocketDataContainer extends React.Component {
@@ -22,7 +23,8 @@ class RocketDataContainer extends React.Component {
     render() {
         const rocketData = this.state.rocketData;
         return (
-            <div>
+            <Paper style={{padding: 20}}>
+                <div>
                 <Typography variant="h5" style={{marginBottom: 8}}>
                 Rocket Configuration
                 </Typography>
@@ -82,6 +84,7 @@ class RocketDataContainer extends React.Component {
             </div>
 
             </div>
+            </Paper>
         );
     }
 }

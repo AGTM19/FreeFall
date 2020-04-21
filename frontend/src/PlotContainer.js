@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useRef } from 'react';
 import Plot from 'react-plotly.js';
 import PlotDataContainer from "./PlotDataContainer";
 import Button from "@material-ui/core/Button";
@@ -28,14 +28,26 @@ const linspace = (a, b, n) => {
 window.lins = linspace;
 
 class PlotContainer extends React.Component {
+
     constructor(props) {
         super(props);
+
+        this.myRef = React.createRef();
+
+        this.scrollToRef = (ref) => {
+            console.log(ref.current);
+            window.myref = ref.current;
+            window.scrollTo(0, ref.current.offsetTop - 100);
+        };
+
+
+
         this.state = {
             plotConfig: this.props.initialConfig,
             plotData: [],
             t: [],
             loading: false,
-            buttonLabel: 'solve',
+            buttonLabel: 'show plots',
             buttonIcon: PlotIcon,
             error: null,
         };
@@ -64,6 +76,9 @@ class PlotContainer extends React.Component {
                 console.log(Math.min(...x));
                 console.log(Math.max(...x));
                 this.setState({plotData, t, loading: false, error: null});
+                setTimeout(() => {
+                    this.scrollToRef(this.myRef)
+                }, 10)
             })
             .catch((err) => {
                 this.setState({error: err && err.message ? err.message : 'could not load plots', loading: false});
@@ -87,8 +102,8 @@ class PlotContainer extends React.Component {
                     initialConfig={this.state.plotConfig}
                     onChange={(update) => this.changeState({plotConfig: {...this.state.plotConfig, ...update}})}
                 />
-                <div style={{marginTop: 40}}>
-                    <Typography variant="h5" style={{marginBottom: 8}}>Plots</Typography>
+                <div style={{margin: 10}}>
+                    {/*<Typography variant="h5" style={{marginBottom: 8}}>Plots</Typography>*/}
                     {!loading &&
                     <Button
                         color="primary"
@@ -112,6 +127,7 @@ class PlotContainer extends React.Component {
                             <Grid container
                                   direction="row"
                                   alignItems="flex-start"
+                                  ref={this.myRef}
                             >
 
 
