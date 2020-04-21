@@ -11,6 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import logo from './logo.png';
+import Button from "@material-ui/core/Button";
 
 
 // https://material-ui.com/components/text-fields/
@@ -100,6 +101,7 @@ function App() {
             <Typography variant={isWide ? "h1" : "h3"} style={{marginBottom: 40}}>
                 <img src={logo} alt="logo" style={{width: 100, height: 100}}/> Parachute Solver
             </Typography>
+
             <Grid container
                   spacing={3}
             >

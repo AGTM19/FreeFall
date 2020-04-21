@@ -39,7 +39,7 @@ class RocketDataContainer extends React.Component {
                                type="number"
                                variant="outlined"
                                style={{margin: 10}}
-                               onChange={e => this.changeState({mass: parseInt(e.target.value)})}
+                               onChange={e => this.changeState({mass: parseFloat(e.target.value)})}
                                value={rocketData.mass}
                     />
                     <TextField item
@@ -47,7 +47,7 @@ class RocketDataContainer extends React.Component {
                                type="number"
                                variant="outlined"
                                style={{margin: 10}}
-                               onChange={e => this.changeState({pos_x: parseInt(e.target.value)})}
+                               onChange={e => this.changeState({pos_x: parseFloat(e.target.value)})}
                                value={rocketData.pos_x}
 
                     />
@@ -56,7 +56,7 @@ class RocketDataContainer extends React.Component {
                                type="number"
                                variant="outlined"
                                style={{margin: 10}}
-                               onChange={e => this.changeState({pos_y: parseInt(e.target.value)})}
+                               onChange={e => this.changeState({pos_y: parseFloat(e.target.value)})}
                                value={rocketData.pos_y}
 
                     />
@@ -65,7 +65,7 @@ class RocketDataContainer extends React.Component {
                                type="number"
                                variant="outlined"
                                style={{margin: 10}}
-                               onChange={e => this.changeState({vel_x: parseInt(e.target.value)})}
+                               onChange={e => this.changeState({vel_x: parseFloat(e.target.value)})}
                                value={rocketData.vel_x}
 
                     />
@@ -74,7 +74,7 @@ class RocketDataContainer extends React.Component {
                                type="number"
                                variant="outlined"
                                style={{margin: 10}}
-                               onChange={e => this.changeState({vel_y: parseInt(e.target.value)})}
+                               onChange={e => this.changeState({vel_y: parseFloat(e.target.value)})}
                                value={rocketData.vel_y}
                     />
                 </Grid>

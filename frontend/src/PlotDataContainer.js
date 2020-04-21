@@ -38,7 +38,7 @@ class PlotDataContainer extends React.Component {
                                    variant="outlined"
                                    style={{margin: 10}}
                                    value={this.state.t_min}
-                                   onChange={e => this.changeState({t_min: parseInt(e.target.value)})}
+                                   onChange={e => this.changeState({t_min: parseFloat(e.target.value)})}
                                    InputLabelProps={{
                                        shrink: true,
                                    }}
@@ -49,7 +49,7 @@ class PlotDataContainer extends React.Component {
                                    variant="outlined"
                                    style={{margin: 10}}
                                    value={this.state.t_max}
-                                   onChange={e => this.changeState({t_max: parseInt(e.target.value)})}
+                                   onChange={e => this.changeState({t_max: parseFloat(e.target.value)})}
                                    InputLabelProps={{
                                        shrink: true,
                                    }}
@@ -60,7 +60,7 @@ class PlotDataContainer extends React.Component {
                                    variant="outlined"
                                    style={{margin: 10}}
                                    value={this.state.t_steps}
-                                   onChange={e => this.changeState({t_steps: parseInt(e.target.value)})}
+                                   onChange={e => this.changeState({t_steps: parseFloat(e.target.value)})}
                                    InputLabelProps={{
                                        shrink: true,
                                    }}

@@ -98,7 +98,9 @@ class PlotContainer extends React.Component {
                     >
                         {this.state.buttonLabel}
                     </Button>
+
                     }
+                    {/*<Button variant="outlined" color="primary" style={{marginLeft: 10}}>reset configuration</Button>*/}
                     {loading && <CircularProgress/>}
                     {this.state.error &&
                     <div><Typography color="error" variant="caption">Error: {this.state.error}</Typography></div>
@@ -123,7 +125,8 @@ class PlotContainer extends React.Component {
                                                       {
                                                           x: this.state.t,
                                                           y: plot,
-                                                          type: 'scatter'
+                                                          type: 'scatter',
+                                                          line: {color: 'rgb(85, 108, 214);', width: 2}
                                                       },
 
                                                   ] : []}

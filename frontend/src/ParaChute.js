@@ -53,51 +53,51 @@ class ParaChute extends React.Component {
 
 
                 <TextField
-                    label="A_max"
+                    label="a [m²]"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({A_max: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({A_max: parseFloat(e.target.value)})}
                     value={chuteData.A_max}
                 />
                 <TextField
-                    label="cw"
+                    label="drag coefficient"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({cw: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({cw: parseFloat(e.target.value)})}
                     value={chuteData.cw}
                 />
                 <TextField
-                    label="opening height"
+                    label="opening height [m]"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({openingHeight: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({openingHeight: parseFloat(e.target.value)})}
                     value={chuteData.openingHeight}
                 />
                 <TextField
-                    label="cut height"
+                    label="cut height [m]"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({cutHeight: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({cutHeight: parseFloat(e.target.value)})}
                     value={chuteData.cutHeight}
                 />
                 <TextField
-                    label="opening delay"
+                    label="opening delay [s]"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({openingDelay: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({openingDelay: parseFloat(e.target.value)})}
                     value={chuteData.openingDelay}
                 />
                 <TextField
-                    label="opening duration"
+                    label="opening duration [s]"
                     type="number"
                     variant="outlined"
                     style={{margin: 10}}
-                    onChange={e => this.changeState({openingDuration: parseInt(e.target.value)})}
+                    onChange={e => this.changeState({openingDuration: parseFloat(e.target.value)})}
                     value={chuteData.openingDuration}
                 />
             </Paper>
