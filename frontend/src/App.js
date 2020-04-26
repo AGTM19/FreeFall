@@ -11,7 +11,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import logo from './logo.png';
-import Button from "@material-ui/core/Button";
 
 
 // https://material-ui.com/components/text-fields/
@@ -51,7 +50,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function App() {
+function App() { // todo: add method to set invalid input, so that we can disable the plot/replot button and show a hint
+    // todo: add import export button, or default configs, and reset button?
     const classes = useStyles();
     const solver = new PataChuteSolverRequests();
     const isWide = useMediaQuery('(min-width:600px)');
@@ -80,18 +80,11 @@ function App() {
                     't': res.body.t
                 };
             })
-            .catch((err) => {
-                console.error(err);
-            });
     };
 
 
     const update = (update) => {
-        console.log('updating ');
-        console.log(Object.keys(update));
-        console.log(data.rocketData);
         data = {...data, ...update};
-        console.log(data.rocketData)
     };
 
 
@@ -105,16 +98,17 @@ function App() {
             <Grid container
                   spacing={3}
             >
-                <Grid item>
-                     <Grid container sm={12} direction="row" wrap={isWide ? "nowrap" : "wrap"}>
-                        <Grid sm={12} md={6} item style={{marginRight: 20}}>
+
+                  <Grid item={true}>
+                    <Grid container={true} direction="row" spacing={2} wrap={isWide ? "nowrap" : "wrap"}>
+                        <Grid item={true} sm={12} md={6} style={{}}>
                             <RocketDataContainer
                                 styles={classes}
                                 initialConfig={data.rocketData}
                                 update={(x) => update({rocketData: x})}
                             />
                         </Grid>
-                        <Grid item sm={12} md={6} style={{}}>
+                        <Grid item={true} sm={12} md={6} style={{}}>
                             <ChuteSizeContainer
                                 styles={classes}
                             />
@@ -122,14 +116,15 @@ function App() {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item={true} xs={12} sm={12}>
                     <ParaChuteContainer
                         styles={classes}
                         update={(x) => update({chutes: x})}
                         chutes={data.chutes}
                     />
                 </Grid>
-                <Grid item xs={12}>
+
+                <Grid>
                     <PlotContainer
                         styles={classes}
                         initialConfig={dataMock.plot_default_config}
@@ -137,6 +132,15 @@ function App() {
                         solve={() => solve()}
                     />
                 </Grid>
+
+
+
+
+
+
+
+
+
             </Grid>
         </div>
     );

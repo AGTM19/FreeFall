@@ -4,8 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
 import Paper from "@material-ui/core/Paper";
-import VolumeDown from '@material-ui/icons/VolumeDown';
-import VolumeUp from '@material-ui/icons/VolumeUp';
 
 
 class ChuteSizeContainer extends React.Component {
@@ -21,12 +19,13 @@ class ChuteSizeContainer extends React.Component {
             cw: this.cw_max,
             a: null,
             g: 9.807,
-            v: 80,
-            rho: 1.184,
-            mass: 60,
+            v: 5.5,
+            rho: 1.125,
+            mass: 100,
             a_max: 1,
             a_min: 2,
-            errors: new Set()
+            errors: new Set(),
+            helperTexts: {}
         };
 
         const {mass, g, rho, v} = this.state;
@@ -40,11 +39,11 @@ class ChuteSizeContainer extends React.Component {
         return Math.round(num * 1000) / 1000;
     }
 
-    a_min(mass, g, rho, v, cw_max){
+    a_min(mass, g, rho, v, cw_max) {
         return ((2 * mass * g) / (rho * v * v * cw_max))
     }
 
-    a_max(mass, g, rho, v, cw_min){
+    a_max(mass, g, rho, v, cw_min) {
         return ((2 * mass * g) / (rho * v * v * cw_min))
     }
 
@@ -56,19 +55,27 @@ class ChuteSizeContainer extends React.Component {
             if (isNaN(parsedValue)) {
                 const errors = new Set(this.state.errors);
                 errors.add(name);
-                this.setState({errors, [name]: value});
+                const helperTexts = this.state.helperTexts;
+                helperTexts[name] = 'invalid input';
+                this.setState({errors, [name]: value, helperTexts});
                 return;
             }
         } catch (e) {
             const errors = new Set(this.state.errors);
             errors.add(name);
-            this.setState({errors, [name]: value});
+            const helperTexts = this.state.helperTexts;
+            helperTexts[name] = 'invalid input';
+            this.setState({errors, [name]: value, helperTexts});
             return;
         }
         const {a, cw, g, v, rho, mass} = {...this.state, [name]: parsedValue};
         const errors = new Set(this.state.errors);
         errors.delete(name);
-        const toBeUpdated = {[name]: parsedValue, errors};
+        const helperTexts = this.state.helperTexts;
+        delete helperTexts[name];
+
+
+        const toBeUpdated = {[name]: parsedValue, errors, helperTexts};
         if (name === "a") {
             toBeUpdated['cw'] = ((2 * mass * g) / (rho * v * v * a));
         } else if (name === "cw") {
@@ -77,7 +84,6 @@ class ChuteSizeContainer extends React.Component {
             toBeUpdated['a_max'] = this.a_max(mass, g, rho, v, this.cw_min);
             toBeUpdated['a_min'] = this.a_min(mass, g, rho, v, this.cw_max);
             toBeUpdated['a'] = ((2 * mass * g) / (rho * v * v * cw));
-            console.log(`a range: {${toBeUpdated['a_min']},${toBeUpdated['a_max']}}`)
         }
         this.setState(toBeUpdated)
     }
@@ -86,151 +92,162 @@ class ChuteSizeContainer extends React.Component {
     render() {
         const {errors} = this.state;
         return (
-         <Paper style={{padding: 20}}>
+            <Paper style={{padding: 20}}>
                 <div>
-                <Typography variant="h5" style={{marginBottom: 8}}>Chute Size Calculator</Typography>
-                <div style={{flexGrow: 1}}>
+                    <Typography variant="h5" style={{marginBottom: 8}}>Chute Size Calculator</Typography>
+                    <div style={{flexGrow: 1}}>
 
 
-                    <Grid container
-                          direction="column"
-                          alignItems="flex-start"
-                    >
-                        <TextField
-                            name="v"
-                            label="velocity [m/s]"
-                            type="number"
-                            variant="outlined"
-                            error={errors.has('v')}
-                            style={{margin: 10}}
-                            onChange={this.changeHandler}
-                            value={this.state.v}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                        <TextField
-                            name="mass"
-                            label="mass [kg]"
-                            type="number"
-                            variant="outlined"
-                            error={errors.has('mass')}
-                            style={{margin: 10}}
-                            onChange={this.changeHandler}
-                            value={this.state.mass}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                        <TextField
-                            name="g"
-                            label="g [m/s²]"
-                            type="number"
-                            variant="outlined"
-                            error={errors.has('g')}
-                            style={{margin: 10}}
-                            onChange={this.changeHandler}
-                            value={this.state.g}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                        <TextField
-                            name="rho"
-                            label="rho [kg/m³]"
-                            type="number"
-                            variant="outlined"
-                            error={errors.has('rho')}
-                            style={{margin: 10}}
-                            onChange={this.changeHandler}
-                            value={this.state.rho}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
+                        <Grid container
+                              direction="column"
+                              alignItems="flex-start"
+                        >
+                            <TextField
+                                name="v"
+                                label="velocity [m/s]"
+                                type="number"
+                                variant="outlined"
+                                error={errors.has('v')}
+                                style={{margin: 10}}
+                                onChange={this.changeHandler}
+                                value={this.state.v}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <TextField
+                                name="mass"
+                                label="mass [kg]"
+                                type="number"
+                                variant="outlined"
+                                error={errors.has('mass')}
+                                style={{margin: 10}}
+                                onChange={this.changeHandler}
+                                value={this.state.mass}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <TextField
+                                name="g"
+                                label="g [m/s²]"
+                                type="number"
+                                variant="outlined"
+                                error={errors.has('g')}
+                                style={{margin: 10}}
+                                onChange={this.changeHandler}
+                                value={this.state.g}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <TextField
+                                name="rho"
+                                label="rho [kg/m³]"
+                                type="number"
+                                variant="outlined"
+                                error={errors.has('rho')}
+                                style={{margin: 10}}
+                                onChange={this.changeHandler}
+                                value={this.state.rho}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
 
-                        <div style={{width: 200, marginLeft: 20}}>
-                            {<Typography gutterBottom>
-                                {/*a = {this.round(this.state.a)}*/}
-                                a [m²]
-                            </Typography>}
-                            <Grid container spacing={2}>
+                            <div style={{width: 200, marginLeft: 20}}>
+                                {<Typography gutterBottom>
+                                    {/*a = {this.round(this.state.a)}*/}
+                                    a [m²]
+                                </Typography>}
+                                <Grid container spacing={2}>
 
-                                <Grid item xs>
-                                    <Slider name="a"
-                                            value={this.state.a}
-                                            min={this.state.a_min}
-                                            max={this.state.a_max}
+                                    <Grid item xs>
+                                        <Slider name="a"
+                                                disabled={errors.size > 0}
+                                                value={this.state.a}
+                                                min={this.state.a_min}
+                                                max={this.state.a_max}
+                                                step={0.01}
+                                                onChange={(x, newVal) => this.changeHandler(({
+                                                    target: {
+                                                        name: 'a',
+                                                        value: newVal
+                                                    }
+                                                }))}/>
+                                    </Grid>
+
+                                </Grid>
+                                <TextField
+                                    name="a"
+                                    inputProps={{
+                                        min: this.state.a_min,
+                                        max: this.state.a_max,
+                                        step: 0.01}
+                                    }
+
+                                    disabled={errors.size > 0}
+                                    onChange={this.changeHandler}
+                                    /*label="a [m²]"*/
+                                    type="number"
+                                    variant="standard"
+                                    helperText={this.state.helperTexts['a'] || ''}
+                                    error={errors.has('a')}
+                                    style={{margin: 0}}
+                                    value={this.state.a}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+
+                                <Typography gutterBottom style={{marginTop: 40}}>
+                                    {/*cw = {this.round(this.state.cw)}*/}
+                                    drag coefficient
+                                </Typography>
+                                <Grid container spacing={2}>
+
+                                    <Grid item xs>
+                                        <Slider
+                                            name="a"
+                                            value={this.state.cw}
+                                            min={this.cw_min}
+                                            max={this.cw_max}
                                             step={0.01}
+                                            disabled={errors.size > 0}
                                             onChange={(x, newVal) => this.changeHandler(({
                                                 target: {
-                                                    name: 'a',
+                                                    name: 'cw',
                                                     value: newVal
                                                 }
-                                            }))}/>
-                                </Grid>
+                                            }))}
+                                        />
 
-                            </Grid>
-                            <TextField
-                                name="a"
-                                onChange={this.changeHandler}
-                                /*label="a [m²]"*/
-                                type="number"
-                                variant="standard"
-                                error={errors.has('a')}
-                                style={{margin: 0}}
-                                value={this.state.a}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-
-                            <Typography gutterBottom style={{marginTop: 40}}>
-                                {/*cw = {this.round(this.state.cw)}*/}
-                                drag coefficient
-                            </Typography>
-                            <Grid container spacing={2}>
-
-                                <Grid item xs>
-                                    <Slider
-                                        name="a"
-                                        value={this.state.cw}
-                                        min={this.cw_min}
-                                        max={this.cw_max}
-                                        step={0.01}
-                                        onChange={(x, newVal) => this.changeHandler(({
-                                            target: {
-                                                name: 'cw',
-                                                value: newVal
-                                            }
-                                        }))}
-                                    />
+                                    </Grid>
 
                                 </Grid>
+                                <TextField
+                                    name="cw"
+                                    disabled={errors.size > 0}
+                                    onChange={this.changeHandler}
+                                    type="number"
+                                    variant="standard"
+                                    error={errors.has('cw')}
+                                    style={{margin: 0}}
+                                    value={this.state.cw}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </div>
 
-                            </Grid>
-                            <TextField
-                                name="cw"
-                                onChange={this.changeHandler}
-                                type="number"
-                                variant="standard"
-                                error={errors.has('cw')}
-                                style={{margin: 0}}
-                                value={this.state.cw}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                        </div>
+                        </Grid>
 
-                    </Grid>
+
+                    </div>
 
 
                 </div>
-
-
-            </div>
-         </Paper>
+            </Paper>
         )
     }
 }

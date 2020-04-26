@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react';
+import React from 'react';
 import Plot from 'react-plotly.js';
 import PlotDataContainer from "./PlotDataContainer";
 import Button from "@material-ui/core/Button";
@@ -35,7 +35,6 @@ class PlotContainer extends React.Component {
         this.myRef = React.createRef();
 
         this.scrollToRef = (ref) => {
-            console.log(ref.current);
             window.myref = ref.current;
             window.scrollTo(0, ref.current.offsetTop - 100);
         };
@@ -55,7 +54,6 @@ class PlotContainer extends React.Component {
 
     changeState(update) {
         const plotConfig = {...this.state.plotConfig, ...update.plotConfig};// todo: here, plotconfig gets nested instead of replaced
-        console.log(plotConfig);
         this.setState({plotConfig});
         this.props.update(plotConfig);
     }
@@ -66,15 +64,9 @@ class PlotContainer extends React.Component {
             .solve()
             .then((result) => {
                 if(!result.plotData || !result.t){
-                    console.log(result);
                     throw Error('no plot data received')
                 }
                 const {t, plotData} = result;
-                console.log(plotData.length);
-                console.log(plotData[0].length);
-                const x = plotData[0].map(x => isNaN(x) ? 1.111 : x);
-                console.log(Math.min(...x));
-                console.log(Math.max(...x));
                 this.setState({plotData, t, loading: false, error: null});
                 setTimeout(() => {
                     this.scrollToRef(this.myRef)
@@ -87,9 +79,6 @@ class PlotContainer extends React.Component {
 
 
     render() {
-        const {
-            t_max, t_min, t_steps
-        } = this.state.plotConfig;
         const {
             plotData,
             loading,

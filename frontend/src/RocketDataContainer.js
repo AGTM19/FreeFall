@@ -9,81 +9,129 @@ class RocketDataContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            rocketData: {...this.props.initialConfig}
+            rocketData: {...this.props.initialConfig},
+            errors: new Set()
         };
+        this.changeHandler = this.changeHandler.bind(this);
     }
 
-    changeState(update){
-        const rocketData = {...this.state.rocketData, ...update};
-        this.setState({rocketData});
-        this.props.update(rocketData)
+
+    changeHandler(event) {
+        const {target: {name, value}} = event;
+        let parsedValue;
+        try {
+            parsedValue = parseFloat(value);
+            if (isNaN(parsedValue)) {
+                const errors = new Set(this.state.errors);
+                errors.add(name);
+                const rocketData = this.state.rocketData;
+                this.setState({errors, rocketData: {...rocketData, [name]: value}});
+                return;
+            }
+        } catch (e) {
+            const errors = new Set(this.state.errors);
+            errors.add(name);
+            const rocketData = this.state.rocketData;
+            this.setState({errors, rocketData: {...rocketData, [name]: value}});
+            return;
+        }
+        const errors = new Set(this.state.errors);
+        errors.delete(name);
+        const rocketData = {...this.state.rocketData, [name]: parsedValue};
+        this.setState({rocketData, errors});
+        this.props.update(rocketData)//todo: only if no errors. already done?!
     }
 
 
     render() {
-        const rocketData = this.state.rocketData;
+        const {errors, rocketData} = this.state;
         return (
             <Paper style={{padding: 20}}>
                 <div>
-                <Typography variant="h5" style={{marginBottom: 8}}>
-                Rocket Configuration
-                </Typography>
+                    <Typography variant="h5" style={{marginBottom: 8}}>
+                        Rocket Configuration
+                    </Typography>
 
-                 <div style={{flexGrow: 1}}>
+                    <div>
 
 
-                    <Grid container
-                      direction="column"
-                      alignItems="flex-start"
-                >
-                    <TextField item
-                               label="mass [kg]"
-                               type="number"
-                               variant="outlined"
-                               style={{margin: 10}}
-                               onChange={e => this.changeState({mass: parseFloat(e.target.value)})}
-                               value={rocketData.mass}
-                    />
-                    <TextField item
-                               label="x position [m]"
-                               type="number"
-                               variant="outlined"
-                               style={{margin: 10}}
-                               onChange={e => this.changeState({pos_x: parseFloat(e.target.value)})}
-                               value={rocketData.pos_x}
+                        <Grid container
+                              direction="column"
+                              alignItems="flex-start"
+                        >
+                            <TextField
+                                       error={errors.has('mass')}
+                                       name="mass"
+                                       label="mass [kg]"
+                                       type="number"
+                                       variant="outlined"
+                                       style={{margin: 10}}
+                                       onChange={this.changeHandler}
+                                       value={rocketData.mass}
+                                       InputLabelProps={{
+                                           shrink: true,
+                                       }}
+                            />
+                            <TextField
+                                       label="x position [m]"
+                                       error={errors.has('pos_x')}
+                                       name="pos_x"
+                                       type="number"
+                                       variant="outlined"
+                                       style={{margin: 10}}
+                                       onChange={this.changeHandler}
+                                       value={rocketData.pos_x}
+                                       InputLabelProps={{
+                                           shrink: true,
+                                       }}
 
-                    />
-                    <TextField item
-                               label="y position [m]"
-                               type="number"
-                               variant="outlined"
-                               style={{margin: 10}}
-                               onChange={e => this.changeState({pos_y: parseFloat(e.target.value)})}
-                               value={rocketData.pos_y}
+                            />
+                            <TextField
+                                       label="y position [m]"
+                                       error={errors.has('pos_y')}
+                                       name="pos_y"
+                                       type="number"
+                                       variant="outlined"
+                                       style={{margin: 10}}
+                                       onChange={this.changeHandler}
+                                       value={rocketData.pos_y}
+                                       InputLabelProps={{
+                                           shrink: true,
+                                       }}
 
-                    />
-                    <TextField item
-                               label="x velocity [m/s]"
-                               type="number"
-                               variant="outlined"
-                               style={{margin: 10}}
-                               onChange={e => this.changeState({vel_x: parseFloat(e.target.value)})}
-                               value={rocketData.vel_x}
+                            />
+                            <TextField
+                                       name="vel_x"
+                                       label="x velocity [m/s]"
+                                       error={errors.has('vel_x')}
+                                       type="number"
+                                       variant="outlined"
+                                       style={{margin: 10}}
+                                       onChange={this.changeHandler}
+                                       value={rocketData.vel_x}
+                                       InputLabelProps={{
+                                           shrink: true,
+                                       }}
 
-                    />
-                    <TextField item
-                               label="y velocity [m/s]"
-                               type="number"
-                               variant="outlined"
-                               style={{margin: 10}}
-                               onChange={e => this.changeState({vel_y: parseFloat(e.target.value)})}
-                               value={rocketData.vel_y}
-                    />
-                </Grid>
+                            />
+                            <TextField
+                                       label="y velocity [m/s]"
+                                       error={errors.has('vel_y')}
+                                       name="vel_y"
+                                       type="number"
+                                       variant="outlined"
+                                       style={{margin: 10}}
+                                       onChange={this.changeHandler}
+                                       value={rocketData.vel_y}
+                                       InputLabelProps={{
+                                           shrink: true,
+                                       }}
+                            />
+                        </Grid>
 
-            </div>
+                    </div>
 
-            </div>
+                </div>
             </Paper>
         );
     }
