@@ -7,7 +7,7 @@ class Environment:
     h0 = 0  # m
     t0 = 288.15  # K
     p0 = 1  # kg / (m * s**2)
-    rho0 = 1.184 #1.225  # kg / m**3
+    rho0 = 1.184  # 1.225  # kg / m**3
     g0 = 9.807  # m / s**2
     kappa = 1.402  # -
     mol = 0.02896  # kg / mol
@@ -76,5 +76,65 @@ def demo():
     pl.show()
 
 
+def vFromMach(mach, h):
+    return mach * np.sqrt(Environment.kappa * Environment.r / Environment.mol * Environment.temperature(h))
+
+
+def vFromLast(Last, h):
+    return np.sqrt(Last * 2 / (2.55 * 0.8 * Environment.rho(h)))
+
+
+def diag():
+    mach4 = []
+    mach6 = []
+    mach8 = []
+    mach1 = []
+    N1000 = []
+    N2500 = []
+    N5000 = []
+    N10000 = []
+
+    hv = np.linspace(0, 40000, 4000)  # TimeVector
+
+    for h in hv:
+        mach4.append(vFromMach(0.4, h))
+        mach6.append(vFromMach(0.6, h))
+        mach8.append(vFromMach(0.8, h))
+        mach1.append(vFromMach(1.0, h))
+        N1000.append(vFromLast(1000, h))
+        N2500.append(vFromLast(2500, h))
+        N5000.append(vFromLast(5000, h))
+        N10000.append(vFromLast(10000, h))
+
+    pl.figure("Mach")
+    l1, = pl.plot(mach4, hv, '-')
+    l1.set_label("Mach = 0.4")
+    l2, = pl.plot(mach6, hv, '--')
+    l2.set_label("Mach = 0.6")
+    l3, = pl.plot(mach8, hv, '-.')
+    l3.set_label("Mach = 0.8")
+    l4, = pl.plot(mach1, hv, ':')
+    l4.set_label("Mach = 1.0")
+    l5, = pl.plot(N1000, hv, '-')
+    l5.set_label("1.0 kN")
+    l6, = pl.plot(N2500, hv, '--')
+    l6.set_label("2.5 kN")
+    l7, = pl.plot(N5000, hv, '-.')
+    l7.set_label("5.0 kN")
+    l8, = pl.plot(N10000, hv, ':')
+    l8.set_label("10.0 kN")
+    
+    pl.xlabel("Velocity [m/s]")
+    pl.ylabel("Height [m]")
+    pl.xlim(0, 600)
+    pl.legend()
+    pl.grid(True)
+    #pl.savefig(title[index] + ".png")
+    # tikzplotlib.save(title[index] + ".tex")
+    pl.show()
+
+
+
 if __name__ == '__main__':
     demo()
+    diag()

@@ -27,6 +27,9 @@ class Chute:
 
         if self.openingDuration != 0 and relative_time < self.openingDuration:
             a = self.A_max * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
+            #a = self.A_max * relative_time / self.openingDuration * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
+
+            #a = self.A_max * relative_time / self.openingDuration
         else:
             a = self.A_max
         return a

@@ -2,7 +2,7 @@ import matplotlib.pyplot as pl
 import tikzplotlib
 
 ylabel = ["X-Position [m]", "Y-Position [m]", "X-Velocity [m/s]", "Y-Velocity [m/s]", "X-acceleration [m/s²]", "Y-acceleration [m/s²]"]
-title = ["Horizontal Position", "Height", "Horizontal Velocity", "Vertical Velocity", "Horizontal acceleration", "Vertical acceleration"]
+title = ["Horizontal_Position", "Height", "Horizontal_Velocity", "Vertical_Velocity", "Horizontal_Acceleration", "Vertical_Acceleration"]
 class Output:
 
     @staticmethod
@@ -10,7 +10,7 @@ class Output:
         for index in range(x.shape[1]):
             pl.figure(index + 1)
             vec = x[:, index]
-            fraction = 4
+            fraction = 1
             pl.plot(t[::fraction], vec[::fraction])
             pl.xlabel('Time [s]')
             pl.ylabel(ylabel[index])

@@ -14,22 +14,24 @@ class Input:
     rocket_manager.mass = 100
     chute_manager = ChuteManager()
     chutes = [
+
         Chute(
             name="Chute1",
-            A_max=1.8,
+            A_max=1.121,
             cw=1.5,
             openingHeight=20000,
             cutHeght=2000,
-            openingDelay=2,
-            openingDuration=0.5),
+            openingDelay=0,
+            openingDuration=2),
+
         Chute(
             name="Chute2",
-            A_max=18,
+            A_max=29.111688,
             cw=2.2,
             openingHeight=2000,
             cutHeght=-1,
-            openingDelay=2,
-            openingDuration=1.0)
+            openingDelay=0,
+            openingDuration=2)
     ]
     drag_manager = None
 
@@ -42,4 +44,4 @@ class Input:
             self.chute_manager.addChute(c)
         self.drag_manager = DragManager(self.rocket_manager, self.chute_manager)
         self.x0 = [0, 20000, 200, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
-        self.t = np.linspace(0, 800, 10000)  # TimeVector
+        self.t = np.linspace(0, 1250, 100000)  # TimeVector
