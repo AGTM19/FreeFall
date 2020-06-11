@@ -17,7 +17,7 @@ class Output:
             pl.title(title[index])
             #pl.legend()
             pl.grid(True)
-            pl.savefig(title[index] + ".png")
+            #pl.savefig(title[index] + ".png")
             #tikzplotlib.save(title[index] + ".tex")
         pl.show()
 
