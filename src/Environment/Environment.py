@@ -48,7 +48,7 @@ class Environment:
 
 
 def demo():
-    hv = np.linspace(0, 71000, 7100)  # TimeVector
+    hv = np.linspace(0, 70000, 7100)  # TimeVector
     tv = []
     g = []
     rhov = []

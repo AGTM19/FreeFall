@@ -3,12 +3,12 @@ import numpy as np
 
 class Chute:
 
-    def __init__(self, name, A_max, cw, openingHeight, cutHeght, openingDelay, openingDuration):
+    def __init__(self, name, A_max, cw, openingHeight, cutHeight, openingDelay, openingDuration):
         self.name = name
         self.A_max = A_max
         self.cw = cw
         self.openingHeight = openingHeight
-        self.cutHeight = cutHeght
+        self.cutHeight = cutHeight
         self.openingDelay = openingDelay
         self.openingDuration = openingDuration
         self.__openingTime = None
@@ -26,8 +26,8 @@ class Chute:
         # a = (1-np.e**(-4*relative_t/self.openingDuration))
 
         if self.openingDuration != 0 and relative_time < self.openingDuration:
-            a = self.A_max * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
-            #a = self.A_max * relative_time / self.openingDuration * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
+        #a = self.A_max * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
+            a = self.A_max * relative_time / self.openingDuration * np.e ** (2 * (0.7 * relative_time / self.openingDuration - 0.7))
 
             #a = self.A_max * relative_time / self.openingDuration
         else:
