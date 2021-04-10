@@ -1,5 +1,6 @@
-bokeh
 numpy
 matplotlib
 scipy
+flask==1.1.2
+flask-cors
 tikzplotlib

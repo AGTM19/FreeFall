@@ -92,5 +92,4 @@ def __cutNullResult(x, t):
 
     x_new = x[:last_index][:]
     t = t[:last_index]
-    print("total time was ", (100 * (1 - last_index / total_length)), "% too long")
     return t, x_new
