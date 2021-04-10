@@ -5,7 +5,7 @@ class ParachuteSolverRequests{
 
     solve(chutes, rocketData, plotConfig){
         return superagent
-            .post('http://0.0.0.0:8000/solve')
+            .post('http://localhost:8000/solve')
             .send({ chutes, rocketData, plotConfig })
     }
 
