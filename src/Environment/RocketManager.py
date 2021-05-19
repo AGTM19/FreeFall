@@ -32,7 +32,7 @@ from math import pi
 class RocketManager:
 
     def __init__(self):
-        self.mass = 90
+        self.mass = 80
         self.area = 0.256**2*pi
         self.cw = {0.1:0.4196,
                    0.25:0.3711,

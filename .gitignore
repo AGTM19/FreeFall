@@ -16,5 +16,8 @@ __pycache__
 .idea/FreeFall.iml
 Scripts
 Lib
+src/**/*.tex
+src/**/*.png
+src/**.png
 pyvenv.cfg
 frontend/node_modules
