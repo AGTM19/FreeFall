@@ -47,38 +47,39 @@ class Environment:
         return v / np.sqrt(Environment.kappa * Environment.r / Environment.mol * Environment.temperature(h))
 
 
-# def demo():
-#     hv = np.linspace(0, 70000, 7100)  # TimeVector
-#     tv = []
-#     g = []
-#     rhov = []
-#
-#     for h in hv:
-#         tv.append(Environment.temperature(h))
-#         g.append(Environment.g(h))
-#         rhov.append(Environment.rho(h))
-#
-#     pl.figure("Temperature")
-#     pl.plot(tv, hv)
-#     pl.xlabel("Temperature [K]")
-#     pl.ylabel("Height [m]")
-#
-#     pl.figure("Gravity")
-#     pl.plot(hv, g)
-#     pl.xlabel("Height [m]")
-#     pl.ylabel("Gravity [m/s²]")
-#
-#     pl.figure("Density")
-#     pl.plot(hv, rhov)
-#     pl.xlabel("Height [m]")
-#     pl.ylabel("Density [kg/m³]")
-#
-#     pl.show()
+def demo():
+    hv = np.linspace(0, 70000, 7100)  # TimeVector
+    tv = []
+    g = []
+    rhov = []
+
+    for h in hv:
+        tv.append(Environment.temperature(h))
+        g.append(Environment.g(h))
+        rhov.append(Environment.rho(h))
+
+    pl.figure("Temperature")
+    pl.plot(tv, hv)
+    pl.xlabel("Temperature [K]")
+    pl.ylabel("Height [m]")
+
+    pl.figure("Gravity")
+    pl.plot(hv, g)
+    pl.xlabel("Height [m]")
+    pl.ylabel("Gravity [m/s²]")
+
+    pl.figure("Density")
+    pl.plot(hv, rhov)
+    pl.xlabel("Height [m]")
+    pl.ylabel("Density [kg/m³]")
+    print(hv[::10])
+    print(rhov[::10])
+
+    pl.show()
 
 
 def vFromMach(mach, h):
     return mach * np.sqrt(Environment.kappa * Environment.r / Environment.mol * Environment.temperature(h))
-
 
 def vFromLast(Last, h):
     return np.sqrt(Last * 2 / (6.5 * 0.3 * Environment.rho(h)))
@@ -86,6 +87,22 @@ def vFromLast(Last, h):
 def vFromq(q, h):
     return np.sqrt(q * 2 / (Environment.rho(h)))
 
+def v_apo(h):
+    p1 = 3.166e-18
+    p2 = -6.915e-14
+    p3 = -6.017e-08
+    p4 = 0.006602
+    p5 = 1.455
+    return p1 * h ** 4 + p2 * h ** 3 + p3 * h ** 2 + p4 * h + p5
+
+def q_apo(h):
+    return 0.5*Environment.rho(h)*v_apo(h)**2
+
+# def max_h(h):
+#
+# def nominal_h(h):
+#
+# def min_h(h):
 
 def diag():
     # mach4 = []
@@ -101,6 +118,7 @@ def diag():
     N30000 = []
     q1 =[]
     q2 = []
+
 
     hv = np.linspace(0, 120000, 4000)  # TimeVector
 
@@ -119,6 +137,8 @@ def diag():
         N30000.append(vFromLast(30000, h))
         q2.append(vFromq(400, h))
 
+
+
     pl.figure("Mach")
     # l1, = pl.plot(mach4, hv, '-')
     # l1.set_label("Mach = 0.4")
@@ -126,8 +146,8 @@ def diag():
     # l2.set_label("Mach = 0.6")
     # l3, = pl.plot(mach8, hv, '-.')
     # l3.set_label("Mach = 0.8")
-    # l4, = pl.plot(mach1, hv, 'r-')
-    # l4.set_label("Mach = 1.0")
+    l4, = pl.plot(mach1, hv, 'r-')
+    l4.set_label("Mach = 1.0")
     # l5, = pl.plot(mach2, hv, 'r-')
     # l5.set_label("Mach = 2.0")
     l6, = pl.plot(mach25, hv, '--')
@@ -140,16 +160,21 @@ def diag():
     # l6.set_label("2.5 kN")
     # l7, = pl.plot(N5000, hv, '-.')
     # l7.set_label("5.0 kN")
-    l8, = pl.plot(q1, hv, ':')
-    l8.set_label("q = 4500 N/m²")
+    # l8, = pl.plot(q1, hv, ':')
+    # l8.set_label("q = 4500 N/m²")
     l9, = pl.plot(N30000, hv, ':')
-    l9.set_label("$F_D$ = 30 kN")
+    l9.set_label("$F_{OP}$ = 30 kN")
     # l10, = pl.plot(q2, hv, ':')
     # l10.set_label("Dynamic Pressure = 4500 N/m²")
+    l10, = pl.plot(v_apo(hv), hv, ':')
+    l10.set_label("$v_{apo}$")
+
+
 
     pl.xlabel("Velocity [m/s]")
     pl.ylabel("Altitude [m]")
-    pl.xlim(0, 1800)
+    pl.xlim(0, 1600)
+    # pl.yticks( [0, 10000, 30000, 45000, 75900, 120000])
     pl.title("Apogee velocity")
     pl.legend(loc='upper right')
     pl.grid(True)
@@ -157,10 +182,17 @@ def diag():
     pl.savefig(save_title[0] + ".png")
     # pl.savefig(title[index] + ".png")
     # tikzplotlib.save(save_title[0] + ".tex")
+
+    # print(hv[::10])
+    # print(mach1[::10])
+    # print(mach3[::10])
+    # print(v_apo[::10])
+
+
     pl.show()
 
 
 
 if __name__ == '__main__':
-    # demo()
+    demo()
     diag()

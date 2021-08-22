@@ -2,10 +2,10 @@ import matplotlib.pyplot as pl
 import numpy as np
 import tikzplotlib
 
-xlabel = ["X-Position [m]", "Altitude [m]", "X-Velocity [m/s]", "Y-Velocity [m/s]", "X-acceleration [m/s²]",
-          "Y-acceleration [m/s²]", "Velocity [m/s]", "Mach [-]", "Dynamic Pressure [N/m²]", "Load [N]"]
-title = ["Horizontal Position", "Altitude", "Horizontal Velocity", "Vertical Velocity", "Horizontal Acceleration",
-         "Vertical Acceleration", "Absolute Velocity", "Mach Number", "Dynamic Pressure", "Shock Load"]
+xlabel = ["X-Position [m]", "Altitude [m]", "X-Velocity [ms$^{-1}$]", "Y-Velocity [ms$^{-1}$]", "X-acceleration [ms$^{-2}$]",
+          "Y-acceleration [ms$^{-2}$]", "Velocity [ms$^{-1}$]", "Mach [-]", "Dynamic pressure [Nm$^{-2}$]", "Load [N]"]
+title = ["Horizontal position", "Altitude", "Horizontal velocity", "Vertical velocity", "Horizontal acceleration",
+         "Vertical acceleration", "Absolute velocity", "Mach number", "Dynamic pressure", "Opening shock load"]
 save_title = ["Horizontal_Position", "Altitude", "Horizontal_Velocity", "Vertical_Velocity", "Horizontal_Acceleration",
          "Vertical_Acceleration", "Absolute_Velocity", "Mach_Number", "Dynamic_Pressure", "Shock_Load"]
 
@@ -25,7 +25,7 @@ class Output:
                 pl.xlabel('Time [s]')
                 pl.ylabel(xlabel[index])
             else:
-                if index == 7:
+                if index == 8:
                     print(xlabel[index])
                     print(vec[::1])
                     print(h[::1])
@@ -33,6 +33,8 @@ class Output:
                 # print vec[::fraction], h[::fraction]) in eine csv mitnamen xlabel[index]
                 pl.plot(vec[::fraction], h[::fraction])
                 pl.ylabel('Altitude [m]')
+                # pl.xlim([-40,1500])
+                # pl.ylim([-40, 620])
                 pl.xlabel(xlabel[index])
             pl.title(title[index])
             # pl.legend()

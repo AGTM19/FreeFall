@@ -24,7 +24,7 @@ class StationaryCWA:
 
 
 def demo():
-    print(StationaryCWA.get_cw_a(80,30, 3000))
+    print(StationaryCWA.get_cw_a(80, 40, 3000))
 
 
 if __name__ == "__main__":
