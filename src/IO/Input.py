@@ -50,27 +50,27 @@ class Input:
     t = None
     additional_args = {}  # hier kann man hinzufuegen, falls in odeint extra Parameter wie 'col_deriv' gebraucht werden
     rocket_manager = RocketManager()
-    rocket_manager.mass = 90
+    rocket_manager.mass = 70
     chute_manager = ChuteManager()
     chutes = [
 
         Chute(
             name="Chute1",
-            A_max=6.5967,
-            cw=0.3,
-            openingHeight=70000,
-            cutHeight=3000,
-            openingDelay=2,
+            A_max=6,
+            cw=0.5,
+            openingHeight=4700,
+            cutHeight=2000,
+            openingDelay=5,
             openingDuration=0.25),
 
         Chute(
             name="Chute2",
             A_max=25.06,
             cw=3.007,
-            openingHeight=3000,
+            openingHeight=2000,
             cutHeight=-1,
             openingDelay=1,
-            openingDuration=0.25)
+            openingDuration=0.7)
     ]
     drag_manager = None
 
@@ -82,5 +82,5 @@ class Input:
         for c in self.chutes:
             self.chute_manager.addChute(c)
         self.drag_manager = DragManager(self.rocket_manager, self.chute_manager)
-        self.x0 = [0, 70000, 230, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
+        self.x0 = [0, 4700, 60, 0]  # [pos_x, pos_y, vel_x, vel_y] StartingVector
         self.t = np.linspace(0, 1250, 100000)  # TimeVector
